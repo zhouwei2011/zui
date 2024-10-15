@@ -1,0 +1,45 @@
+<template>
+    <div class="rate-demo">
+        <div class="block">
+            <div class="demonstration">评分</div>
+            <!-- voidColor属性控制未选中星的颜色 -->
+            <el-rate v-model="value1" allow-half @change="change"></el-rate>
+            <div class="demonstration">禁用</div>
+            <el-rate v-model="value2" allow-half @change="change" disabled></el-rate>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'rateDemo',
+    data() {
+        return {
+            value1: 0,
+            value2: 2.5
+        }
+    },
+    methods: {
+        change() {
+            console.log(this.value1)
+            console.log(this.value2)
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.rate-demo {
+    .block {
+        .demonstration {
+            opacity: 0.7;
+            color: #3b4155;
+            line-height: 20px;
+            margin-bottom: 8px;
+        }
+        ::v-deep .el-rate__icon {
+            font-size: 24px;
+        }
+    }
+}
+</style>
