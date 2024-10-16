@@ -1,0 +1,39 @@
+.zrx-status {
+    display: inline-block;
+
+    &::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: 1px;
+    }
+
+    &.primary::before {
+        background-color: var(--status-primary, #405ffe);
+    }
+
+    &.error::before {
+        background-color: $error;
+    }
+
+    &.success::before {
+        background-color: $--tag-green-color;
+    }
+
+    &.disabled::before {
+        background-color: $black-5;
+    }
+
+    &.warning::before {
+        background-color: $warning;
+    }
+
+    > span {
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 0px;
+    }
+}

@@ -1,0 +1,179 @@
+@keyframes loading1 {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 0.15;
+    }
+    50% {
+        opacity: 0.15;
+    }
+    62.5% {
+        opacity: 0.05;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes loading2 {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.4;
+    }
+    62.5% {
+        opacity: 0.4;
+    }
+    75% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes loading3 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    37.5% {
+        opacity: 0.75;
+    }
+    75% {
+        opacity: 0.75;
+    }
+    87.5% {
+        opacity: 0.15;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes loading4 {
+    0% {
+        opacity: 0;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    87.5% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes dot1 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+}
+@keyframes dot2 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+@keyframes dot3 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+}
+.zoomInOut-enter,
+.zoomInOut-leave-to {
+    opacity: 0;
+    transform: scale(0);
+}
+.zoomInOut-enter-active,
+.zoomInOut-leave-active {
+    transition: opacity 0.3s, transform 0.3s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+.collapseNav-enter,
+.collapseNav-leave-to {
+    height: 0 !important;
+    opacity: 0;
+}
+.collapseNav-enter-active,
+.collapseNav-leave-active {
+    overflow: hidden;
+    transition: height 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.dropDownUp-enter,
+.dropDownUp-leave-to {
+    opacity: 0;
+    transform: scaleY(0);
+}
+.dropDownUp-enter-active,
+.dropDownUp-leave-active {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.flashInOut-enter,
+.flashInOut-leave-to {
+    opacity: 0;
+}
+.flashInOut-enter-active {
+    transition: opacity 0.1s;
+}
+.flashInOut-leave-active {
+    transition: opacity 0.1s;
+}
+.slideAsideTab-enter,
+.slideAsideTab-leave-to {
+    transform: translateX(100%);
+    opacity: 0;
+}
+.slideAsideTab-leave,
+.slideAsideTab-leave-active,
+.slideAsideTab-leave-to {
+    display: none;
+}
+.slideAsideTab-enter-active {
+    transition: all 0.2s;
+}
+.fadeInOutTab-enter,
+.fadeInOutTab-leave-to {
+    opacity: 0;
+}
+.fadeInOutTab-leave,
+.fadeInOutTab-leave-active,
+.fadeInOutTab-leave-to {
+    display: none;
+}
+.fadeInOutTab-enter-active {
+    transition: all 0.2s;
+}
+
+.zrxFadeInOut-enter,
+.zrxFadeInOut-leave-to {
+    opacity: 0;
+}
+.zrxFadeInOut-enter-acitve,
+.zrxFadeInOut-leave-active {
+    transition: opacity 0.2s;
+}

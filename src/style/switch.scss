@@ -1,0 +1,106 @@
+// switch样式
+.el-switch {
+    height: 32px;
+    &[size=small] {
+        $--switch-width: 32px;
+        height: 16px;
+        &.is-checked {
+            .el-switch__core {
+                &:after {
+                    margin-left: -13px;
+                }
+            }
+        }
+        .el-switch__core {
+            width: 32px !important;
+            min-width: 32px;
+            height: 16px;
+            border-radius: 8px;
+            &:after {
+                // 与UI沟通，小号的规范圆圈大小13.33px是错误的，应该为12px;
+                width: 12px;
+                height: 12px;
+                left: 1px;
+            }
+        }
+    }
+    &[size=middle] {
+        $--switch-width: 40px;
+        height: 20px;
+        &.is-checked {
+            .el-switch__core {
+                &:after {
+                    margin-left: -17px;
+                }
+            }
+        }
+        .el-switch__core {
+            min-width: 40px;
+            height: 20px;
+            border-radius: 10px;
+            &:after {
+                width: 16px;
+                height: 16px;
+                left: 1px;
+            }
+        }
+    }
+    // 未选中样式
+    .el-switch__core {
+        min-width: $--switch-width;
+        height: $--switch-height;
+        line-height: $--switch-height;
+        background-color: $--switch-bg;
+        border: 1px solid $--switch-border;
+        border-radius: $--switch-height;
+        &:hover {
+            background-color: $--switch-bg-hover;
+            border-color: $--switch-bg-hover;
+        }
+        &:after {
+            width: 20px;
+            height: 20px;
+            left: 1px;
+        }
+    }
+    // 选中后样式
+    &.is-checked {
+        .el-switch__core {
+            border-color: $--switch-bg-checked;
+            background-color: $--switch-bg-checked;
+            &:hover {
+                border-color: $--switch-bg-checked-hover;
+                background-color: $--switch-bg-checked-hover;
+            }
+            &:after {
+                left: 100%;
+                margin-left: -21px;
+            }
+        }
+        // 开启后禁用样式
+        &.is-disabled .el-switch__core {
+            background: $--switch-bg-disabled;
+            border: 1px solid $--switch-disabled-border;
+        }
+    }
+    // 关闭后禁用样式
+    &.is-disabled {
+        .el-switch__core {
+            background: $background;
+            border: 1px solid $--switch-border;
+        }
+    }
+    
+}
+.el-switch__label {
+    color: $--text-color;
+    &.is-active {
+        color: $--switch-bg-checked;
+    }
+}
+.el-switch__label--left {
+    margin-right: 8px;
+}
+.el-switch__label--right {
+    margin-left: 8px;
+}

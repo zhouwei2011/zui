@@ -1,0 +1,48 @@
+.zrx-crumb-nav {
+    display: flex;
+    align-items: center;
+
+    // .btn {
+    //     &:last-child {
+    //         cursor: default;
+    //     }
+    // }
+
+    > button:not(.selected) {
+        &:hover {
+            color: $--text-color;
+            text-decoration: underline;
+            + .svg-icon {
+                background-color: $--text-color;
+            }
+        }
+    }
+    .el-dropdown {
+        height: 24px;
+    }
+    button {
+        max-width: 160px;
+        height: 24px;
+        color: $--text-dim;
+        @include ellipsis;
+        &.selected,
+        &.selected:hover {
+            cursor: default;
+            color: $--text-color;
+            text-decoration: none;
+        }
+    }
+    .el-dropdown {
+        button {
+            border-radius: 2px;
+            &:hover {
+                background-color: $--hover-primary;
+            }
+        }
+    }
+    .svg-icon {
+        &:not([selected]) {
+            background-color: $--text-dim;
+        }
+    }
+}

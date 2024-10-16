@@ -1,0 +1,762 @@
+// 时间选择器样式
+// 重置elementUI的时间组件样式
+// 选择框的样式
+.el-date-editor {
+    ::v-deep .el-range-separator {
+        padding: 0;
+    }
+    &.is-active {
+        border-color: $primary;
+        &:hover {
+            border-color: $primary;
+        }
+    }
+    .el-input__icon {
+        &.el-range__icon {
+            position: absolute;
+            top: 3px;
+            right: 4px;
+            width: 24px;
+            height: 24px;
+            background-color: $--text-color;
+            mask-image: url("../assets/svg-icon/common_clock.svg");
+            &::after{
+                display: none;
+            }
+            &::before{
+                display: none;
+            }
+        }
+        &.el-range__close-icon {
+            z-index: 1;
+            margin-left: 4px;
+            &.el-icon-circle-close {
+                background-color: #fff;
+                &::before {
+                    content: '';
+                }
+            }
+            &::before{
+                position: absolute;
+                top: 3px;
+                right: 4px;
+                width: 24px;
+                height: 24px;
+                background-color: $--text-dim;
+                mask-image: url("../assets/svg-icon/common_close_f.svg");
+            }
+        }
+    }
+    .el-range-separator {
+        width: 24px;
+        position: relative;
+        color: transparent !important;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 7px;
+            width: 10px;
+            height: 1px;
+            background: $--text-color;
+        }
+    }
+    .el-range-input {
+        color: $font;
+        width: calc((100% - 24px - 25px - 4px) / 2); // 47%;
+        &::placeholder {
+            color: $--text-disabled;
+        }
+        &:focus {
+            border-bottom: 2px solid $primary;
+        }
+    }
+    &.el-range-editor {
+        // 范围选择禁用
+        &.is-disabled {
+            border-color: $border-3;
+            background-color: $background;
+            color: $--text-disabled;
+            .el-range-input {
+                color: $--text-disabled;
+            }
+            .el-range-separator {
+                &::after {
+                    background: $--text-disabled;
+                }
+            }
+            .el-input__icon {
+                background-color: transparent;
+                &.el-range__icon {
+                    background-color: $--text-disabled;
+                }
+                &.el-range__close-icon {
+                    &::before {
+                        background-color: $--text-disabled;
+                    }
+                }
+            }
+        }
+        padding: 0 4px 0 10px;
+    }
+    // 日期点选择、时间点选择、选择周、选择月、选择年(后缀图标不一样)
+    &.el-date-editor--date,&.el-date-editor--time,&.el-date-editor--week,&.el-date-editor--month,&.el-date-editor--year {
+        padding: 0;
+        position: relative;
+        &.is-disabled {
+            .el-input__prefix {
+                background-color: $--text-disabled;
+            }
+            .el-input__suffix {
+                background-color: transparent;
+                .el-input__suffix-inner .el-input__icon {
+                    background-color: transparent;
+                }
+            }
+        }
+        .el-input__inner {
+            padding-left: 8px;
+        }
+        .el-input__prefix {
+            position: absolute;
+            top: 4px;
+            left: auto;
+            right: 4px;
+            width: 24px;
+            height: 24px;
+            background-color: $--text-color;
+            mask-image: url("../assets/svg-icon/common_clock.svg");
+            >i {
+                display: none;
+            }
+            
+        }
+        .el-input__suffix {
+            width: 24px;
+            height: 24px !important;
+            top: 4px;
+            .el-input__suffix-inner {
+                position: relative;
+                .el-input__icon {
+                    width: 24px;
+                    height: 24px !important;
+                }
+                .el-icon-circle-close {
+                    background-color: #fff;
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 24px;
+                        height: 24px;
+                        background-color: $--text-dim;
+                        mask-image: url("../assets/svg-icon/common_close_f.svg");
+                    }
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    // 日期点选择、选择周、选择月、选择年
+    &.el-date-editor--date, &.el-date-editor--week, &.el-date-editor--month,&.el-date-editor--year {
+        .el-input__prefix {
+            mask-image: url("../assets/svg-icon/common_calendar.svg");
+        }
+    }
+    // 日期范围选择
+    &.el-date-editor--daterange {
+        .el-input__icon {
+            &.el-range__icon {
+                mask-image: url("../assets/svg-icon/common_calendar.svg");
+            }
+        }
+    }
+}
+
+// 下拉框的公共边框样式，底部确认框样式, 时间点面板滚动样式
+.el-time-panel, .el-picker-panel {
+    // 下拉框的公共边框样式
+    &.el-popper {
+        background: #FFFFFF;
+        border: 1px solid #DCDFE8;
+        box-shadow: 0 1px 2px -4px rgba(59,65,85,0.08), 0 6px 12px 2px rgba(59,65,85,0.05), 0 12px 24px 4px rgba(59,65,85,0.02);
+        border-radius: 2px;
+        .popper__arrow {
+            display: none;
+        }
+    }
+    &.el-popper[x-placement^=bottom] {
+        margin-top: 4px;
+    }
+    // 底部确认框样式
+    .el-time-panel__footer {
+        height: 40px;
+        padding: 3px 4px;
+        .el-time-panel__btn {
+            height: 32px;
+            padding: 0 8px;
+            border-radius: 2px;
+            font-size: 14px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 32px;
+            &.cancel {
+                background: #FFFFFF;
+                border: solid 1px $border-3;
+                color: $--text-color;
+                &:hover {
+                    background: $gray-1;
+                }
+        
+                &:focus {
+                    background-color: $gray-2;
+                }
+            }
+            &.confirm {
+                background: $primary;
+                margin-right: 0;
+                &:hover {
+                    border-color: $primary-3;
+                    background-color: $primary-3;
+                }
+        
+                &:focus {
+                    border-color: $primary-4;
+                    background-color: $primary-4;
+                }
+            }
+        }
+    }
+    // 时间点面板滚动样式
+    .el-time-panel__content {
+        overflow: inherit;
+        &::before {
+            border: none;
+        }
+        &::after {
+            border: none;
+        }
+        .el-time-spinner {
+            .el-time-spinner__wrapper {
+                height: 233px;
+                max-height: 233px;
+                .el-scrollbar__wrap {
+                    padding: 0;
+                }
+                .el-time-spinner__list {
+                    border-right: 1px solid $border-3;
+                    &::before {
+                        height: 2px;
+                    }
+                    &::after {
+                        height: 231px;
+                    }
+                    .el-time-spinner__item {
+                        font-size: 14px;
+                        color: #3B4155;
+                        &.disabled {
+                            color: $--text-disabled;
+                        }
+                        &.active:not(.disabled) {
+                            // background: #ECEFFE;
+                            color: inherit;
+                            font-weight: 400;
+                            position: relative;
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background: #ECEFFE;
+                                z-index: -1;
+                            }
+                        }
+                    }
+                }
+                &:first-of-type {
+                    .el-time-spinner__list .el-time-spinner__item {
+                        &.active:not(.disabled) {
+                            &::after {
+                                left: 2px;
+                                border-radius: 2px 0 0 2px;
+                            }
+                        }
+                    }
+                }
+                &:last-of-type {
+                    .el-time-spinner__list .el-time-spinner__item {
+                        &.active:not(.disabled) {
+                            &::after {
+                                right: 2px;
+                                border-radius: 0 2px 2px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 表格样式
+    table {
+        display: table;
+        border-collapse: separate;
+        margin: 0;
+        th, td {
+            border: none;
+        }
+        tr {
+            border: none;
+            &:nth-child(2n) {
+                background: none;
+            }
+        }
+    }
+}
+
+// 时间点选择的下拉框样式
+.el-time-panel {
+    width: 148px;
+    .el-time-panel__content .el-time-spinner .el-time-spinner__wrapper {
+        &:last-of-type {
+            .el-time-spinner__list{
+                border-right: none;
+            }
+        }
+    }
+}
+// 时间点范围选择的下拉框样式
+.el-time-range-picker {
+    &.el-popper {
+        width: 340px !important;
+    }
+    .el-time-range-picker__content {
+        padding: 0;
+        vertical-align: top;
+        font-size: 0;
+        .el-time-range-picker__cell {
+            padding: 0;
+            width: 46%;
+            &:nth-child(2) {
+                margin-left: 8%;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 16px;
+                    left: -20px;
+                    width: 10px;
+                    height: 1px;
+                    background: $--text-color;
+                }
+                .el-time-range-picker__body {
+                    .el-time-spinner__list {
+                        border-left: 1px solid $border-3;
+                        border-right: none;
+                    }
+                }
+            }
+            .el-time-range-picker__header {
+                display: none;
+            }
+            .el-time-range-picker__body {
+                border: 0;
+            }
+        }
+    }
+}
+
+// 日期点组件下拉框样式
+.el-picker-panel {
+    &.el-date-picker {
+        width: 272px;
+        &.w288 {
+            width: 288px;
+        }
+        .el-picker-panel__body-wrapper {
+            // 日历面板模块
+            .el-picker-panel__body {
+                .el-date-picker__header {
+                    height: 40px;
+                    padding: 0 8px;
+                    margin: 0;
+                    .el-date-picker__header-label {
+                        font-size: 14px;
+                        color:  $--text-color;
+                        text-align: center;
+                        line-height: 40px;
+                        @include boldFont
+                    }
+                    .el-picker-panel__icon-btn {
+                        margin-top: 13px;
+                        margin-left: 8px;
+                        font-size: 14px;
+                        color: $--text-disabled;
+                        &.el-date-picker__next-btn {
+                            margin-left: 0;
+                            margin-right: 8px;
+                        }
+                        &:hover {
+                            color: $--text-disabled;
+                        }
+                    }
+                }
+                .el-picker-panel__content {
+                    width: 100%;
+                    padding: 0 8px 4 px 8px;
+                    margin: 0;
+                    .el-date-table {
+                        td {
+                            &.disabled {
+                                div {
+                                    color: $--text-disabled;
+                                    background: $gray-1;
+                                }
+                            }
+                            &.current:not(.disabled) {
+                                span {
+                                    background: $primary;
+                                }
+                                &:hover {
+                                    span {
+                                        color: #fff;
+                                    }
+                                }
+                                &.today {
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 有快捷选项
+        &.has-sidebar {
+            .el-picker-panel__body-wrapper {
+                padding-bottom: 40px;
+                border-radius: 0 0 2px 2px;
+                .el-picker-panel__body {
+                    margin-left: 0;
+                }
+                // 快捷选项模块
+                .el-picker-panel__sidebar {
+                    border-top: 1px solid $border-3;
+                    border-right: none;
+                    top: auto;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 40px;
+                    width: 100%;
+                    padding-top: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .el-picker-panel__shortcut {
+                        text-align: center;
+                        line-height: 20px;
+                        color: $primary;
+                        font-size: 14px;
+                        width: auto;
+                        padding-left: 0;
+                        padding-right: 6px;
+                        &:last-of-type {
+                            padding-right: 0;
+                        }
+                        
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+// 日期范围组件下拉框样式 // 选择周的组件下拉框样式 
+.el-picker-panel {
+    width: 545px;
+    .el-picker-panel__body {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 39px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            border-bottom: 1px solid $border-3;
+            z-index: 1;
+        }
+    }   
+    .el-picker-panel__content {
+        padding: 0 8px 8px 8px;
+        
+        .el-date-range-picker__header {
+            height: 40px;
+            padding: 0;
+            >div {
+                font-size: 14px;
+                color: $--text-color;
+                text-align: center;
+                line-height: 40px;
+                @include boldFont
+            }
+            .el-picker-panel__icon-btn {
+                margin-top: 13px;
+                margin-left: 8px;
+                font-size: 14px;
+                color: $--text-disabled;
+                &:hover {
+                    color: $--text-disabled;
+                }
+            }
+        }
+        .el-date-table {
+            th {
+                font-size: 14px;
+                color: $--text-color;
+                border-bottom: none;
+                @include boldFont;
+                padding: 12px 0 4px 0;
+            }
+            td {
+                font-size: 14px;
+                padding: 6px 0;
+                color: $--text-color;
+                font-weight: 400;
+                &:first-child {
+                    div {
+                        margin-left: 6px !important;
+                        border-top-left-radius: 2px !important;
+                        border-bottom-left-radius: 2px !important;
+                    }
+                }
+                &:last-child {
+                    div {
+                        margin-right: 6px !important;
+                        border-top-right-radius: 2px !important;
+                        border-bottom-right-radius: 2px !important;
+                    }
+                }
+                div {
+                    height: 24px;
+                    padding: 0;
+                }
+                span {
+                    font-weight: 400;
+                    border-radius: 2px;
+                }
+                &:hover {
+                    span {
+                        color: inherit;
+                        background: $gray-1;
+                    }
+                }
+                &.prev-month, &.next-month {
+                    color: $--text-disabled;
+                }
+                &.today {
+                    span {
+                        color: inherit;
+                        border: 1px solid $primary;
+                        line-height: 22px;
+                    }
+                }
+                &.end-date, &.start-date {
+                    
+                    span {
+                        background: $primary;
+                    }
+                }
+                &.start-date {
+                    div {
+                        margin-left: 6px;
+                        border-top-left-radius: 2px;
+                        border-bottom-left-radius: 2px;
+                    }
+                }
+                &.end-date {
+                    div {
+                        margin-right: 6px;
+                        border-top-right-radius: 2px;
+                        border-bottom-right-radius: 2px;
+                    }
+                }
+                &.in-range {
+                    div {
+                        background: $primary-1;
+                    }
+                }
+            }
+            // 选择周的组件下拉框样式,选中样式
+            &.is-week-mode {
+                .el-date-table__row {
+                    &:hover {
+                        div {
+                            background-color: $gray-1;
+                        }
+                    }
+                    &.current {
+                        td {
+                            color: #fff;
+                            &.in-range {
+                                div {
+                                    background: $primary;
+                                }
+                            }
+                            &:hover {
+                                span {
+                                    color: #fff;
+                                    background: $primary;
+                                }
+                            }
+                        }
+                        div {
+                            background-color: $primary;
+                        }
+                    }
+                }
+                
+            }
+        }
+        &.is-left {
+            border-right: none;
+            .el-date-table {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: -8px;
+                    bottom: -10px;
+                    width: 1px;
+                    border-right: 1px solid $border-3;
+                }
+            }
+        }
+        &.is-right {
+            .el-date-range-picker__header {
+                .el-picker-panel__icon-btn {
+                    margin-left: 0;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
+
+// 选择月组件下拉框样式
+.el-picker-panel {
+    .el-picker-panel__body-wrapper {
+        .el-picker-panel__body {
+            .el-date-picker__header--bordered {
+                border: none;
+            }
+            .el-picker-panel__content {
+                .el-month-table, .el-year-table {
+                    margin: 0;
+                    margin-top: 7px;
+                    td {
+                        padding: 15px 0;
+                        div {
+                            height: 24px;
+                            padding: 0 5px;
+                        }
+                        .cell {
+                            width: auto;
+                            height: 24px;
+                            line-height: 24px; 
+                            font-size: 14px;
+                            color: $--text-color;
+                            border-radius: 2px;
+                            font-family: MicrosoftYaHei;
+                            &:hover {
+                                background: $gray-1;
+                            }
+                        }
+                        &.today {
+                            .cell {
+                                font-weight: 400;
+                            }
+                        }
+                        &.current {
+                            .cell {
+                                background: $primary;
+                                color: #fff;
+                                &:hover {
+                                    background: $primary;
+                                }
+                            }
+                        }
+                        &.disabled {
+                            .cell {
+                                color: $--text-disabled;
+                                background: $gray-1;
+                            }
+                        }
+                    }
+                }
+                .el-year-table {
+                    td { 
+                        padding: 15px 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// elment滚动条样式
+.el-time-panel, .el-picker-panel {
+    .el-scrollbar {
+        right: 0;
+        bottom: 0;
+        .el-scrollbar__wrap {
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        .el-scrollbar__bar {
+            border-radius: 0;
+            &:hover {
+                // background: rgba(59, 65, 85, 0.04);
+                &.is-horizontal {
+                    .el-scrollbar__thumb {
+                        height: 8px;
+                        margin-top: 2px;
+                        border-radius: 4px;
+                    }
+                }
+                &.is-vertical {
+                    .el-scrollbar__thumb {
+                        width: 8px;
+                        border-radius: 4px;
+                    }
+                }
+            }
+    
+            &.is-horizontal {
+                height: 12px;
+                .el-scrollbar__thumb {
+                    height: 4px;
+                    margin-top: 4px;
+                    border-radius: 2px;
+                }
+            }
+            &.is-vertical {
+                width: 12px;
+                right: 0;
+                .el-scrollbar__thumb {
+                    margin: auto;
+                    width: 4px;
+                    border-radius: 2px;
+                }
+            }
+        }
+    }
+}

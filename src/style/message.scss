@@ -1,0 +1,347 @@
+// 提示框样式
+.el-message {
+    height: 40px;
+    padding: 8px 4px;
+    border-radius: 2px;
+
+    .el-message__content {
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+        font-weight: 400;
+        color: $--text-color;
+        padding: 0;
+    }
+    &.is-closable {
+        padding: 8px 32px 8px 4px;
+
+        .el-message__content {
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            font-weight: 400;
+            color: $--text-color;
+            padding: 0;
+        }
+    }
+
+    .el-message__closeBtn.el-icon-close {
+        right: 4px;
+        width: 24px;
+        height: 24px;
+        background-color: $font;
+        mask-image: url(../assets/svg-icon/common_close_sm.svg);
+        &::before {
+            content: none;
+        }
+    }
+
+    .el-message__icon {
+        margin-right: 4px;
+    }
+
+    // 全局提示无关闭按钮
+    &:not(.has-background) {
+        background-color: $white;
+        border-color: transparent;
+        @include message-shadow;
+    }
+
+    // 成功提示框
+    &.el-message--success {
+        &.has-background {
+            background-color: $--tag-green-background-color;
+            border: solid 1px $--tag-green-border-color;
+        }
+
+        .el-icon-success {
+            width: 24px;
+            height: 24px;
+            background-color: $--tag-green-color;
+            mask-image: url(../assets/svg-icon/feedback_success_sm.svg);
+            &::before {
+                content: none;
+            }
+        }
+    }
+
+    // 警告提示框
+    &.el-message--warning {
+        &.has-background {
+            border: 1px solid $--tag-orange-border-color;
+            background: $--tag-orange-background-color;
+        }
+
+        .el-icon-warning {
+            width: 24px;
+            height: 24px;
+            background-color: $warning-4;
+            mask-image: url(../assets/svg-icon/feedback_warning_sm.svg);
+            &::before {
+                content: none;
+            }
+        }
+    }
+
+    // 消息提示框
+    &.el-message--info {
+        &.has-background {
+            border: 1px solid $--tag-blue-border-color;
+            background: $--tag-blue-background-color;
+        }
+
+        .el-icon-info {
+            width: 24px;
+            height: 24px;
+            background-color: $primary;
+            mask-image: url(../assets/svg-icon/feedback_info_sm.svg);
+            &::before {
+                content: none;
+            }
+        }
+    }
+
+    // 错误提示框
+    &.el-message--error {
+        &.has-background {
+            border: 1px solid $--tag-red-border-color;
+            background: $--tag-red-background-color;
+        }
+
+        .el-icon-error {
+            width: 24px;
+            height: 24px;
+            background-color: $error;
+            mask-image: url(../assets/svg-icon/feedback_error_sm.svg);
+            &::before {
+                content: none;
+            }
+        }
+    }
+}
+
+// modal
+.el-message-box__wrapper {
+    .el-message-box {
+        position: relative;
+        border-radius: 2px;
+        width: 360px;
+        border: 0;
+        padding: 0;
+        @include message-shadow;
+        .el-message-box__header {
+            // display: none;
+            padding: 0;
+            .el-message-box__title {
+                padding: 36px 24px 0 96px;
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 400;
+                span {
+                    word-break: break-all;
+                }
+            }
+        }
+
+        .el-message-box__content {
+            padding: 0 24px 0 96px;
+
+            .el-message-box__container {
+                position: static;
+                // display: flex;
+                // align-items: flex-start;
+                width: 100%;
+                .el-message-box__status {
+                    position: absolute;
+                    top: 40px;
+                    left: 40px;
+                    // flex: 0 0 auto;
+                    width: 40px;
+                    height: 40px;
+                    mask-position: center center;
+                    mask-size: 100% 100%;
+                    mask-repeat: no-repeat;
+                    transform: none;
+                    &::before {
+                        content: none;
+                    }
+                    &.el-icon-success {
+                        background-color: $--tag-green-color;
+                        mask-image: url("../assets/svg-icon/feedback_success_lg.svg");
+                    }
+                    &.el-icon-warning {
+                        background-color: $warning;
+                        mask-image: url("../assets/svg-icon/feedback_question_lg.svg");
+                    }
+                    &.el-icon-info {
+                        background-color: $primary;
+                        mask-image: url("../assets/svg-icon/feedback_info_lg.svg");
+                    }
+                    &.el-icon-error {
+                        background-color: $error;
+                        mask-image: url("../assets/svg-icon/feedback_error_lg.svg");
+                    }
+                }
+                .el-message-box__message {
+                    // flex: 1 1 auto;
+                    max-height: 120px;
+                    padding: 4px 0 0 0;
+                    overflow: auto;
+                    p {
+                        // line-height: 24px;
+                        // font-size: 16px;
+                        // color: $--text-color;
+                        opacity: 0.7;
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-weight: 400;
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+
+        .el-message-box__btns {
+            display: flex;
+            justify-content: flex-end;
+            padding: 24px;
+
+            .el-button--default {
+                width: 80px;
+                height: 32px;
+                line-height: 30px;
+                font-size: 14px;
+                &.el-button--primary {
+                    order: -1;
+                    min-width: 96px;
+                    margin: 0;
+                    background-color: $white;
+                    border: 1px solid $border-3;
+                    color: $font;
+                    &:hover {
+                        background-color: $background;
+                    }
+                    &:active {
+                        background-color: $--btn-default-bg-focus;
+                    }
+                }
+                & + .el-button--primary {
+                    order: -1;
+                    min-width: 80px;
+                    margin-right: 8px;
+                    background-color: $primary;
+                    border: 1px solid $primary;
+                    color: $white;
+                    &:hover {
+                        border-color: $--btn-primary-bg-hover;
+                        background-color: $--btn-primary-bg-hover;
+                    }
+                    &:focus {
+                        background-color: $--btn-primary-bg-focus;
+                    }
+                }
+            }
+        }
+    }
+    // 只有标题的modal
+    &[aria-label="dialog"] {
+        .el-message-box {
+            border-radius: 2px;
+            width: 360px;
+            border: 0;
+            padding: 0;
+            @include message-shadow;
+            .el-message-box__header {
+                // display: none;
+                padding: 0;
+                .el-message-box__title {
+                    padding: 0;
+                }
+            }
+
+            .el-message-box__content {
+                padding: 36px 24px 0 40px;
+
+                .el-message-box__container {
+                    display: flex;
+                    align-items: flex-start;
+                    width: 100%;
+                    .el-message-box__status {
+                        position: static;
+                        flex: 0 0 auto;
+                        width: 40px;
+                        height: 40px;
+                        margin-top: 4px;
+                        mask-position: center center;
+                        mask-size: 100% 100%;
+                        mask-repeat: no-repeat;
+                        transform: none;
+                        &::before {
+                            content: none;
+                        }
+                        &.el-icon-success {
+                            background-color: $--tag-green-color;
+                            mask-image: url("../assets/svg-icon/feedback_success_lg.svg");
+                        }
+                        &.el-icon-warning {
+                            background-color: $warning;
+                            mask-image: url("../assets/svg-icon/feedback_question_lg.svg");
+                        }
+                        &.el-icon-info {
+                            background-color: $primary;
+                            mask-image: url("../assets/svg-icon/feedback_info_lg.svg");
+                        }
+                        &.el-icon-error {
+                            background-color: $error;
+                            mask-image: url("../assets/svg-icon/feedback_error_lg.svg");
+                        }
+                    }
+                    .el-message-box__message {
+                        flex: 1 1 auto;
+                        padding: 0 0 0 16px;
+                        display: flex;
+                        align-items: center;
+                        min-height: 44px;
+                        word-break: break-all;
+                        max-height: none;
+                        p {
+                            opacity: 1;
+                            font-size: 16px;
+                            color: #3b4155;
+                            line-height: 24px;
+                        }
+                    }
+                }
+            }
+
+            .el-message-box__btns {
+                display: flex;
+                justify-content: flex-end;
+                padding: 24px;
+
+                .el-button--default {
+                    width: 80px;
+                    height: 32px;
+                    line-height: 30px;
+                    font-size: 14px;
+                }
+
+                // .el-button--default.el-button--primary {
+                //     order: -1;
+                //     min-width: 80px;
+                //     margin: 0 8px 0 0;
+                //     background-color: $primary;
+                //     border-color: $primary;
+                //     color: $white;
+                //     &:hover {
+                //         border-color: $--btn-primary-bg-hover;
+                //         background-color: $--btn-primary-bg-hover;
+                //     }
+                //     &:focus {
+                //         background-color: $--btn-primary-bg-focus;
+                //     }
+                // }
+            }
+        }
+    }
+}

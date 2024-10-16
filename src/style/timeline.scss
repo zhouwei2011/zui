@@ -1,0 +1,63 @@
+// 时间线样式
+.el-timeline {
+    font-size: 14px;
+
+    .el-timeline-item {
+        .el-timeline-item__tail {
+            border-left: solid 1px #d8d8d8;
+            left: 4px;
+        }
+
+        &.solid-dot .el-timeline-item__node {
+            width: 16px;
+            height: 16px;
+            left: -4px; 
+            background-color: #91c3ff;
+            border: solid 3px #e6f2ff;
+        }
+
+        .el-timeline-item__node {
+            width: 10px;
+            height: 10px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            border: solid 1px $primary;
+        }
+
+        .el-timeline-item__wrapper {
+            .el-timeline-item__content {
+                .timeline-name {
+                    color: #000000;
+                    line-height: 22px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+
+                .timeline-action {
+                    display: inline-block;
+                    line-height: 22px;
+                    color: rgba(0, 0, 0, 0.45);
+                    vertical-align: middle;
+                }
+
+                .timeline-time {
+                    float: right;
+                    line-height: 22px;
+                    vertical-align: middle;
+                    color: rgba(0, 0, 0, 0.45);
+                }
+
+                .timeline-content {
+                    background-color: #fffbe6;
+                    border-radius: 4px;
+                    border: solid 1px #ffe58f;
+                    padding: 5px 10px;
+                    margin: 8px 0 16px;
+                    line-height: 22px;
+                    color: rgba(0, 0, 0, 0.65);
+                }
+            }
+        }
+    }
+}

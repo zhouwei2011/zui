@@ -1,0 +1,147 @@
+@use "sass:math";
+// 计数器
+.el-input-number:not(.el-slider__input) {
+    $inputNumHeight: 32px;
+    min-width: 80px;
+    width: 100%;
+    height: $inputNumHeight;
+    line-height: $inputNumHeight;
+    &.is-without-controls {
+        .el-input__inner {
+            padding-right: 8px;
+            padding-left: 8px;
+            text-align: left;
+        }
+    }
+    &.is-controls-right {
+        .el-input-number__decrease {
+            width: 23.5px;
+            border-radius: 0 0 1px 0;
+            line-height: math.div($inputNumHeight, 2) - 1;
+            background-color: $white;
+            bottom: 0.9px;
+            overflow: hidden;
+            .el-icon-arrow-down {
+                transform: none;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    left: -1px;
+                    width: 24px;
+                    height: 24px;
+                    background-color: $font-3;
+                    mask-image: url("../assets/svg-icon/common_angle_down_sm.svg");
+                }
+            }
+            &:hover {
+                &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+                    border-color: $primary;
+                    box-shadow: 0 0 4px 2px $--selected-primary;
+                }
+                background-color: $background;
+                .el-icon-arrow-down {
+                    &::before {
+                        background-color: $font;
+                    }
+                }
+            }
+        }
+
+        .el-input-number__increase {
+            width: 23.5px;
+            border-radius: 0 1px 0 0;
+            line-height: math.div($inputNumHeight, 2) - 1;
+            background-color: $white;
+            top: 1px;
+            overflow: hidden;
+            .el-icon-arrow-up {
+                transform: none;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    left: -1px;
+                    width: 24px;
+                    height: 24px;
+                    background-color: $font-3;
+                    mask-image: url("../assets/svg-icon/common_angle_up_sm.svg");
+                }
+            }
+            &:hover {
+                &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+                    border-color: $primary;
+                    box-shadow: 0 0 4px 2px $--selected-primary;
+                }
+                background-color: $background;
+                .el-icon-arrow-up {
+                    &::before {
+                        background-color: $font;
+                    }
+                }
+            }
+        }
+        .el-input {
+            .el-input__inner {
+                height: $inputNumHeight;
+                padding: 0 23.5px 0 8px;
+                border-radius: 2px;
+                border: 1px solid $border-3;
+                line-height: 20px;
+                text-align: left;
+                font-weight: 400;
+                font-size: 14px;
+                color: $font;
+
+                // &:hover {
+                //     border-color: $primary;
+                //     box-shadow: 0 0 4px 2px $--selected-primary;
+                // }
+                &:focus {
+                    border-color: $primary;
+                    box-shadow: 0 0 4px 2px $--selected-primary;
+                }
+            }
+        }
+        // 禁用状态
+        &.is-disabled {
+            .el-input-number__decrease {
+                width: 23.5px;
+                border-radius: 0 0 2px 0;
+                line-height: math.div($inputNumHeight, 2) - 1;
+                background-color: $background;
+                .el-icon-arrow-down {
+                    &::before {
+                        background-color: rgba(var(--font), 0.3);
+                    }
+                }
+                &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+                    border-color: $border-3;
+                    box-shadow: none;
+                }
+            }
+            .el-input-number__increase {
+                width: 23.5px;
+                border-radius: 0 1px 0 0;
+                line-height: math.div($inputNumHeight, 2) - 1;
+                background-color: $background;
+                .el-icon-arrow-up {
+                    &::before {
+                        background-color: rgba(var(--font), 0.3);
+                    }
+                }
+                &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+                    border-color: $border-3;
+                    box-shadow: none;
+                }
+            }
+            .el-input {
+                .el-input__inner {
+                    color: $--text-disabled;
+                }
+            }
+        }
+    }
+}

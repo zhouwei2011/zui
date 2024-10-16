@@ -1,0 +1,193 @@
+.zrx-drop-tree {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    border: 1px solid $border;
+    border-radius: 2px;
+    background-color: $white;
+    &.focus {
+        border-color: $primary;
+        box-shadow: 0 0 4px 2px $--nav-selected-bg;
+    }
+    &[disabled] {
+        cursor: not-allowed;
+        background-color: $background;
+        .tag,
+        .text {
+            color: $--text-disabled;
+            .btn {
+                opacity: 0.3;
+                pointer-events: none;
+            }
+        }
+        > .btn {
+            pointer-events: none;
+        }
+    }
+    &:not([disabled]) {
+        .wrapper {
+            cursor: pointer;
+        }
+    }
+    &[clearable] {
+        > .btn-clear {
+            display: none;
+        }
+        &:hover {
+            > .btn-toggle {
+                display: none;
+            }
+            > .btn-clear {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+    .wrapper {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: flex-start;
+        height: 100%;
+        overflow: hidden;
+        .tag {
+            height: 24px;
+            margin: 3px 0 0 2px;
+            padding: 0 8px;
+            border: 1px solid $border;
+            border-radius: 2px;
+            line-height: 22px;
+            user-select: none;
+            background-color: $background;
+            .btn {
+                position: absolute;
+                top: -1px;
+                right: 2px;
+            }
+            &:not(.tip) {
+                position: relative;
+                flex: 0 1 auto;
+                padding-right: 28px;
+                @include ellipsis;
+            }
+            &.tip {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+        }
+        .text {
+            width: 100%;
+            height: 100%;
+            padding: 0 0 0 8px;
+            line-height: 30px;
+            @include ellipsis;
+        }
+    }
+    .placeholder {
+        padding-left: 8px;
+        line-height: 30px;
+        color: $--placeholder;
+        pointer-events: none;
+        @include ellipsis;
+    }
+    > .btn {
+        &.btn-toggle {
+            margin-right: 4px;
+            .zrx-icon-down-angle {
+                background-color: $--text-dim;
+            }
+        }
+        &.btn-clear {
+            display: none;
+        }
+    }
+    &:hover {
+        > .btn-clear {
+            display: inline-block;
+        }
+    }
+}
+.zrx-drop-tree-dropper {
+    position: absolute;
+    width: 100%;
+    min-width: 246px;
+    max-height: 246px;
+    padding: 4px;
+    border-radius: 4px;
+    @include dropdown-shadow;
+    background-color: $white;
+    overflow: auto;
+    z-index: 2;
+    border: 1px solid #DCDFE8;
+    // @include no-scrollbar;
+    &[placement='internal'] {
+        &.y-placement-bottom {
+            top: 100%;
+        }
+        &.y-placement-top {
+            bottom: 100%;
+        }
+        &.x-placement-left {
+            right: 0;
+        }
+        &.x-placement-right {
+            left: 0;
+        }
+    }
+    &.y-placement-bottom {
+        margin-top: 4px;
+        transform-origin: 50% 0;
+    }
+    &.y-placement-top {
+        margin-bottom: 4px;
+        transform-origin: 50% 100%;
+    }
+    &.horizontal {
+        .el-tree {
+            display: inline-block;
+            min-width: 100%;
+        }
+    }
+    &[type='single'] {
+        .el-tree .el-tree-node.is-current:not(.is-checked) > .el-tree-node__content::before {
+            content: none;
+        }
+    }
+    .search-bar {
+        position: sticky;
+        top: -4px;
+        left: 0;
+        margin-top: -4px;
+        padding: 4px 0;
+        background-color: $white;
+        z-index: 3;
+        .inner {
+            display: flex;
+            align-items: center;
+            padding: 0 4px 0 8px;
+            border: 1px solid $border-3;
+            border-radius: 2px;
+        }
+        input {
+            flex: 1 1 auto;
+            height: 30px;
+            padding: 0;
+            border: 0;
+            border-radius: 2px 0 0 2px;
+            line-height: 30px;
+        }
+        .btn {
+            flex: 0 0 auto;
+            line-height: 0;
+        }
+    }
+}
+
+.el-form-item.is-error .el-form-item__content .zrx-drop-tree-dropper .search-bar .el-input__inner {
+    border-color: $border;
+    box-shadow: none;
+    &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 4px 2px $--selected-primary;
+    }
+}

@@ -1,0 +1,28 @@
+// 面包屑样式
+.el-breadcrumb {
+    .el-breadcrumb__item {
+        .el-breadcrumb__inner {
+            font-size: 14px;
+            line-height: 22px;
+            color: $black-3;
+
+            &.is-link {
+                color: $primary;
+                font-weight: normal;
+            }
+
+            &:hover:not(.is-link) {
+                color: $black-3;
+            }
+        }
+
+        .el-breadcrumb__inner + .el-breadcrumb__separator {
+            color: $black-3;
+            margin: 0 12px;
+        }
+
+        .el-breadcrumb__inner.is-link + .el-breadcrumb__separator {
+            color: $primary;
+        }
+    }
+}

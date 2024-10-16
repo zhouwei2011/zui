@@ -1,0 +1,88 @@
+// tag标签样式
+.el-tag {
+    padding: 0 8px;
+    border: 1px solid $--tag-default-border-color;
+    border-radius: 2px;
+
+    font-weight: 400;
+    color: $font;
+    &.is-closable {
+        padding: 0 0 0 8px;
+        height: 24px;
+        border: 1px solid $--tag-default-border-color;
+        background-color: $--tag-default-background-color; //#f4f5f8
+        line-height: 22px;
+        &:active {
+            background: $--btn-border-color;
+        }
+        .el-tag__close.el-icon-close {
+            right: 0;
+            width: 24px;
+            height: 24px;
+            line-height: 22px;
+            margin: 0 2px;
+            vertical-align: top;
+            mask-image: url("../assets/svg-icon/common_close_sm.svg");
+            background-color: $font;
+            &:hover {
+                background-color: $primary;
+            }
+            &::before {
+                content: none;
+            }
+        }
+    }
+    &.small {
+        height: 24px;
+        line-height: 22px;
+        font-size: 12px;
+    }
+    &.middle {
+        height: 28px;
+        line-height: 26px;
+        font-size: 14px;
+    }
+    &.large {
+        height: 32px;
+        line-height: 30px;
+        font-size: 14px;
+    }
+    &.white {
+        border-color: $--tag-default-border-color;
+        background-color: $--tag-white-background-color; //rgba(255,255,255,1)
+        color: $--tag-default-color;
+    }
+    &.grey {
+        border-color: $--tag-default-border-color;
+        background-color: $--tag-grey-background-color; //rgba(244,245,248,1)
+        color: $--tag-default-color;
+    }
+    &.blue {
+        border-color: $--tag-blue-border-color;
+        background-color: $--tag-blue-background-color;
+        color: $--tag-blue-color;
+    }
+    &.green {
+        border-color: $--tag-green-border-color;
+        background-color: $--tag-green-background-color;
+        color: $--tag-green-color;
+    }
+    &.orange {
+        border-color: $--tag-orange-border-color;
+        background-color: $--tag-orange-background-color;
+        color: $--tag-orange-color;
+    }
+    &.red {
+        border-color: $--tag-red-border-color;
+        background-color: $--tag-red-background-color;
+        color: $--tag-red-color;
+    }
+}
+.el-tooltip {
+    font-size: 14px;
+    color: $--tag-default-color;
+    // line-height: 20px;
+    &:hover {
+        text-decoration: none !important;
+    }
+}

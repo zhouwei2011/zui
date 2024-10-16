@@ -1,0 +1,129 @@
+// 复选框样式
+.el-checkbox {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    height: 32px;
+    // margin-right: 12px;
+    // vertical-align: top;
+    .el-checkbox__input {
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        margin: 4px;
+        text-align: center;
+        .el-checkbox__inner {
+            // 未选中
+            width: 14px;
+            height: 14px;
+            top: 50%;
+            border: 1px solid $--table-tr-border-color;
+            border-radius: 1px;
+            background-color: $white;
+            transform: translateY(-50%);
+            &:hover {
+                border-color: $--radio-hover-border;
+                background-color: $--tag-blue-background-color;
+            }
+        }
+        // 半选中样式
+        &.is-indeterminate {
+            .el-checkbox__inner {
+                border: 1px solid $--table-tr-border-color;
+                background-color: $white;
+
+                &:before {
+                    top: 25%;
+                    left: 25%;
+                    transform: scale(1);
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 1px;
+                    background-color: $primary;
+                }
+                &:hover {
+                    border-color: $--radio-hover-border;
+                    background-color: $--tag-blue-background-color;
+
+                    &:before {
+                        background-color: $--radio-hover-border;
+                    }
+                }
+            }
+        }
+    }
+
+    .el-checkbox__label {
+        flex: 1 1 auto;
+        padding: 0;
+        line-height: 19px;
+        color: $font-3;
+        @include ellipsis;
+    }
+    // 选中样式
+    &.is-checked {
+        .el-checkbox__input {
+            &.is-checked {
+                .el-checkbox__inner {
+                    border: 1px solid $--table-tr-border-color;
+                    background-color: $white;
+
+                    &:after {
+                        top: 0px;
+                        left: 3px;
+                        width: 4px;
+                        height: 8px;
+                        border-radius: 1px;
+                        border-bottom: 2px solid;
+                        border-right: 2px solid;
+                        border-color: $--checkbox-normal-selected;
+                        border-width: 2px !important;
+                    }
+                    &:hover {
+                        border-color: $--radio-hover-border;
+                        background-color: $--tag-blue-background-color;
+                        &:after {
+                            border-color: $--radio-hover-border;
+                        }
+                    }
+                }
+            }
+        }
+
+        .el-checkbox__label {
+            color: $font-3;
+        }
+    }
+
+    &.is-disabled {
+        .el-checkbox__input {
+            .el-checkbox__inner {
+                border-color: $--table-tr-border-color;
+                background-color: $background;
+            }
+
+            &.is-checked {
+                .el-checkbox__inner {
+                    border-color: $--table-tr-border-color;
+                    background-color: $background;
+                    &:hover {
+                        border-color: $--table-tr-border-color;
+                        background-color: $background;
+                        &:after {
+                            border-color: $--text-disabled;
+                        }
+                    }
+
+                    &:after {
+                        border-color: $--text-disabled;
+                    }
+                }
+            }
+
+            & + .el-checkbox__label {
+                // 与UI沟通，在表单里面禁选项的文字不用置灰；其他使用情况根据UI稿设定
+                color: $font-3;
+            }
+        }
+    }
+}

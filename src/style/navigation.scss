@@ -1,0 +1,149 @@
+.zrx-navigation {
+    width: 200px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    user-select: none;
+    @include no-scrollbar;
+    background-color: $--nav-bg;
+    transition: width 0.3s ease-out;
+    &[collapse] {
+        width: 48px;
+        .nav-bar {
+            > .btn,
+            > .nav-title {
+                opacity: 0;
+            }
+            > .icon-wrap {
+                margin-left: 4px;
+            }
+            &.dropped {
+                background-color: transparent;
+            }
+        }
+    }
+    > .inner {
+        padding: 12px 8px;
+    }
+    .icon-wrap {
+        flex: 0 0 auto;
+        display: flex;
+        width: 24px;
+        height: 24px;
+        margin: 0 8px 0 var(--indent, 14px);
+        transition: margin 0.3s ease-out;
+        .icon {
+            margin: auto;
+        }
+        .svg-icon {
+            @include flex-center;
+            overflow: hidden;
+            i {
+                width: 24px;
+                height: 24px;
+                display: inline-block;
+                transform: translate(-100%);
+                filter: drop-shadow($font 24px 0);
+            }
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+    }
+    .menu-group {
+        &.level-2 {
+            height: calc(var(--bars) * 40px);
+        }
+
+        &.level-1 {
+            + .level-1 {
+                margin-top: 2px;
+            }
+        }
+    }
+    .nav-title {
+        flex: 1 1 auto;
+        @include ellipsis;
+        transition: opacity 0.3s ease-out;
+    }
+    .nav-bar {
+        display: flex;
+        align-items: center;
+        position: relative;
+        color: $--nav-text;
+        transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        .icon.svg-icon {
+            background-color: $--nav-text;
+            transition: background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        > .btn {
+            flex: 0 0 auto;
+            margin: 0 12px 0 8px;
+            transition: opacity 0.3s ease-out;
+        }
+        > .el-dropdown {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            p {
+                display: block;
+                height: 100%;
+            }
+        }
+        &.main {
+            height: 40px;
+            > .nav-title {
+                line-height: 22px;
+            }
+        }
+        &.sub {
+            height: 40px;
+            > .nav-title {
+                line-height: 22px;
+            }
+        }
+        &.descendant {
+            height: 40px;
+            > .nav-title {
+                line-height: 22px;
+                font-size: 14px;
+            }
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: $--nav-hover-bg;
+        }
+        &.selected,
+        &:active {
+            color: $--nav-text-selected;
+            background-color: $--nav-selected-bg;
+            @include boldFont;
+            .icon-wrap .icon {
+                background-color: $primary;
+            }
+            .icon-wrap .svg-icon {
+                i {
+                    filter: drop-shadow($primary 24px 0);
+                }
+            }
+            &.main {
+                @include boldFont;
+            }
+        }
+        &.dropped {
+        }
+        &.current {
+            color: $--nav-text-selected;
+            .icon-wrap .icon {
+                background-color: $primary;
+            }
+            &.main {
+            }
+        }
+    }
+}

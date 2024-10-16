@@ -1,0 +1,51 @@
+//el-tooltip样式
+.el-tooltip__popper.is-dark,
+.el-tooltip__popper.is-light {
+    max-width: 252px;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 2px;
+    line-height: 20px;
+    font-size: 14px;
+    background-color: $--tooltip-background-color;
+    color: $font;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px $--tooltip-shadow-color-1) drop-shadow(0 0 4px $--tooltip-shadow-color-2);
+    z-index: 1;
+    &[x-placement] {
+        .popper__arrow {
+            border-color: transparent;
+            &:after {
+                background-color: transparent;
+            }
+        }
+    }
+    &[x-placement^="bottom"] {
+        .popper__arrow {
+            &:after {
+                border-bottom-color: $--tooltip-background-color;
+            }
+        }
+    }
+    &[x-placement^="top"] {
+        .popper__arrow {
+            &:after {
+                border-top-color: $--tooltip-background-color;
+            }
+        }
+    }
+    &[x-placement^="right"] {
+        .popper__arrow {
+            &:after {
+                border-right-color: $--tooltip-background-color;
+            }
+        }
+    }
+    &[x-placement^="left"] {
+        .popper__arrow {
+            &:after {
+                border-left-color: $--tooltip-background-color;
+            }
+        }
+    }
+}

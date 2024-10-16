@@ -1,0 +1,263 @@
+// element-ui表格样式
+$scrollWidth: 12px;
+.el-table {
+    &::before {
+        display: none;
+    }
+    //table列表中带有button按钮的样式
+    .cell {
+        padding: 0 12px;
+        .el-button {
+            padding-left: 0px;
+        }
+
+        &:has(> .el-checkbox.is-disabled) {
+            cursor: not-allowed;
+        }
+
+        .el-checkbox.is-disabled {
+            pointer-events: none;
+        }
+    }
+    .el-table__fixed-right-patch {
+        background-color: $--table-header-color;
+    }
+    .el-table__fixed-right-patch {
+        background-color: $--table-header-color;
+    }
+
+    //fixed固定列设置
+    .el-table__fixed-right,
+    .el-table__fixed {
+        height: auto !important;
+        bottom: $scrollWidth;
+    }
+    th.el-table__cell.hidden {
+        > .cell {
+            display: none;
+        }
+        + .el-table__cell .cell::before {
+            content: none;
+        }
+    }
+    .el-table__body-wrapper {
+        // min-height: calc(100% - 41px);
+        .el-table__row {
+            &.selected-row,
+            &.current-row {
+                .el-table__cell {
+                    background-color: $--table-tr-selected-color;
+                }
+            }
+            .el-table__cell {
+                border-bottom: 1px solid $--table-tr-border-color;
+                color: $--table-text-color;
+                padding: 0;
+                &.el-table-column--selection {
+                    .cell {
+                        padding: 0;
+                    }
+                }
+                @include empty;
+            }
+
+            &.hover-row {
+                .el-table__cell {
+                    background-color: $--table-tr-hover-color;
+                }
+            }
+        }
+        .el-table__empty-block {
+            padding: 60px 0;
+            border: none;
+            border-radius: 0 0 2px 2px;
+            .el-table__empty-text {
+                display: block;
+                height: 56px;
+                user-select: none;
+                padding-top: 46px;
+                box-sizing: border-box;
+                color: rgba(var(--font), 0.3);
+                background: url(../assets/svg-icon/default_no_data_l.svg) center center / 100% 100% no-repeat;
+            }
+        }
+    }
+    .el-table__fixed-body-wrapper .el-table__body {
+        padding-bottom: $scrollWidth;
+        .el-table__row {
+            &.selected-row,
+            &.current-row {
+                .el-table__cell {
+                    background-color: $--table-tr-selected-color;
+                }
+            }
+
+            .el-table__cell {
+                border-bottom: 1px solid $--table-tr-border-color;
+                color: $--table-text-color;
+                padding: 0;
+                &.el-table-column--selection {
+                    .cell {
+                        padding: 0;
+                    }
+                }
+                @include empty;
+            }
+            &.hover-row {
+                .el-table__cell {
+                    background-color: $--table-tr-hover-color;
+                }
+            }
+        }
+    }
+    td {
+        height: 40px;
+        .cell {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            @include empty;
+            .text-button {
+                width: 40px;
+                padding: 0;
+                text-align: left;
+            }
+            .more-btn {
+                margin-right: 0;
+            }
+        }
+    }
+    .el-table__fixed,
+    .el-table__fixed-right {
+        &::before {
+            display: none;
+        }
+    }
+    .is-scrolling-left ~ .el-table__fixed {
+        box-shadow: none;
+    }
+    .is-scrolling-right ~ .el-table__fixed-right {
+        box-shadow: none;
+    }
+    //表头行样式
+    .el-table__header {
+        tr {
+            background: $--table-header-color;
+            th {
+                font-weight: 600;
+                color: $--table-text-color;
+                font-size: 14px;
+                background: $--table-header-color;
+                padding: 0;
+                height: 40px;
+                &.el-table-column--selection {
+                    .cell {
+                        padding: 0;
+                    }
+                }
+                &.is-center {
+                    .cell {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                //排序按钮，点击排序后ascending颜色
+                &.ascending {
+                    .cell {
+                        .caret-wrapper {
+                            .sort-caret {
+                                &.ascending {
+                                    border-bottom-color: $font;
+                                }
+                            }
+                        }
+                    }
+                }
+                //排序按钮，点击排序后descending颜色
+                &.descending {
+                    .cell {
+                        .caret-wrapper {
+                            .sort-caret {
+                                &.descending {
+                                    border-top-color: $font;
+                                }
+                            }
+                        }
+                    }
+                }
+                .cell {
+                    height: 40px;
+                    line-height: 40px;
+                    padding: 0 12px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 14px;
+                    .ellipsis {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    .caret-wrapper {
+                        height: 24px;
+                        .sort-caret {
+                            border-width: 3px;
+
+                            &.ascending {
+                                top: 3px;
+                            }
+                            &.descending {
+                                bottom: 5px;
+                            }
+                        }
+                    }
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        width: 1px;
+                        height: 16px;
+                        background-color: $--table-text-color;
+                        opacity: 0.2;
+                    }
+                }
+                &:nth-child(1) {
+                    .cell {
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .el-table__fixed {
+        .el-table__header {
+            tr {
+                th:nth-child(2) {
+                    .cell {
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+    .el-table__fixed-right {
+        .el-table__fixed-right-patch {
+            background-color: $--table-header-color;
+        }
+
+        .el-table__header {
+            tr {
+                th {
+                    .cell {
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+}

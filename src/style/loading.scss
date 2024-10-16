@@ -1,0 +1,11 @@
+.el-loading-mask {
+    background-color: hsla(0,0%,100%,0);
+    .el-loading-spinner{
+        .path{
+            stroke:$primary
+        }
+        .el-loading-text{
+            color: $primary;
+        }
+    }
+}

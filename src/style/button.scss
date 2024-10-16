@@ -1,0 +1,268 @@
+// 重置element-ui按钮样式
+.el-button {
+    border-radius: 2px;
+    min-width: 80px;
+    height: $--btn-size-normal;
+    padding: 0 8px;
+    align-items: center;
+
+    > i {
+        display: inline-block;
+        margin: 3px 0px;
+        margin-left: -4px;
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        vertical-align: bottom;
+        + span {
+            text-align: left;
+            padding-left: 4px;
+        }
+    }
+
+    > span {
+        display: inline-block;
+        // margin: 6px 0;
+        padding: 0;
+        // padding-left: 4px;
+        height: 30px;
+        line-height: 30px;
+        font-weight: 400;
+        font-size: 14px;
+        text-align: center;
+        > i {
+            margin: 3px 0px;
+            margin-left: -4px;
+            font-size: 24px;
+            vertical-align: bottom;
+        }
+    }
+
+    &.el-button--mini,
+    &.el-button--small {
+        min-width: 58px;
+        height: $--btn-size-small;
+
+        span {
+            line-height: 24px;
+        }
+
+        > i {
+            margin-right: 6px;
+            font-size: 16px;
+            vertical-align: -1px;
+        }
+    }
+
+    // 主要按钮
+    &.el-button--primary {
+        border-color: $primary;
+        background-color: $primary;
+
+        &:hover {
+            border-color: $--btn-primary-bg-hover;
+            background-color: $--btn-primary-bg-hover;
+        }
+
+        &:focus {
+            border-color: $--btn-primary-bg-focus;
+            background-color: $--btn-primary-bg-focus;
+        }
+        i {
+            background-color: $white;
+        }
+    }
+    &.el-button--danger {
+        border-color: $error;
+        background-color: $error;
+        &:hover {
+            border-color: $error-4;
+            background-color: $error-4;
+        }
+
+        &:focus {
+            border-color: $error-5;
+            background-color: $error-5;
+        }
+        i {
+            background-color: $white;
+        }
+    }
+    // 次要按钮
+    &.el-button--default,
+    &.el-button-secondary {
+        border: solid 1px $--btn-border-color;
+        background-color: $--btn-default-bg;
+        color: $--text-color;
+
+        &:hover {
+            background: $--btn-default-bg-hover;
+        }
+
+        &:focus {
+            background-color: $--btn-default-bg-focus;
+        }
+    }
+
+    // 幽灵按钮
+    &.el-button--ghost {
+        border: solid 0px transparent;
+        background-color: transparent;
+        color: $--text-color;
+
+        &:hover {
+            border: solid 0px $--btn-ghost-bg-hover;
+            background-color: $--btn-ghost-bg-hover;
+        }
+
+        &:focus {
+            border: solid 0px $--btn-ghost-bg-focus;
+            background-color: $--btn-ghost-bg-focus;
+        }
+    }
+    &.is-circle {
+        min-width: $--btn-size-normal;
+        width: $--btn-size-normal;
+        height: $--btn-size-normal;
+        padding: 0px;
+        padding-left: 6px;
+    }
+    &.is-round {
+        min-width: $--btn-size-normal;
+        width: $--btn-size-normal;
+        height: $--btn-size-normal;
+        padding: 0px;
+        padding-left: 6px;
+        border-radius: 2px;
+    }
+    // 文字按钮
+    &.el-button--text {
+        min-width: auto;
+        color: $--btn-text-color;
+        border: 0;
+        span {
+            height: 30px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+        }
+        &:hover {
+            color: $--btn-primary-bg-hover;
+        }
+        &:focus {
+            color: $--btn-primary-bg-focus;
+        }
+        i {
+            background-color: $primary;
+        }
+    }
+
+    // 按钮失效
+    &.is-disabled {
+        border: solid 1px $--btn-border-color;
+        background-color: $--btn-disabled-bg;
+        color: $--text-disabled;
+
+        &.el-button--text {
+            border: 0;
+            background-color: transparent;
+        }
+
+        &:hover {
+            border: solid 1px $--btn-border-color;
+            background-color: $--btn-disabled-bg;
+            color: $--text-color-disabled;
+
+            &.el-button--text {
+                border: 0;
+                background-color: transparent;
+            }
+        }
+        i {
+            background-color: $--text-disabled;
+        }
+    }
+}
+
+.el-dropdown-menu.el-popper {
+    background: #ffffff;
+    border: 1px solid #dcdfe8;
+    box-sizing: border-box;
+    padding: 0;
+    box-shadow: 0 1px 2px -4px rgba(59, 65, 85, 0.08), 0 6px 12px 2px rgba(59, 65, 85, 0.05), 0 12px 24px 4px rgba(59, 65, 85, 0.02);
+
+    &[x-placement^='bottom'] {
+        margin-top: 6px !important;
+    }
+    &[x-placement^='top'] {
+        margin-bottom: 6px !important;
+    }
+
+    .el-dropdown-menu__item {
+        line-height: 32px;
+        color: $--text-color;
+        text-align: left;
+        padding: 0 8px;
+        min-width: 96px;
+        margin-bottom: 0 !important;
+
+        &:focus,
+        &:not(.is-disabled):not(.selected):hover {
+            background-color: $--hover-primary;
+        }
+        &:first-child {
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+        &:last-of-type {
+            border-bottom-right-radius: 2px;
+            border-bottom-left-radius: 2px;
+        }
+        &:not(:last-of-type) {
+            margin-bottom: 2px;
+        }
+        &.is-disabled {
+            color: $--text-disabled;
+        }
+        &.selected {
+            background-color: $--selected-primary;
+        }
+    }
+
+    .popper__arrow {
+        border-bottom-color: #dcdfe8;
+    }
+
+    &[role='nav'] {
+        margin: 0 0 0 12px;
+        padding: 4px;
+        &::before {
+            content: none;
+        }
+        .el-dropdown-menu__item {
+            min-width: 104px;
+            user-select: none;
+            &:not(:last-of-type) {
+                margin-bottom: 2px;
+            }
+            padding: 0 8px;
+            line-height: 40px;
+            text-align: left;
+            color: $font;
+            background-color: $--nav-bg;
+            &:hover {
+                color: $font;
+                background-color: $--nav-hover-bg;
+            }
+            &.selected,
+            &:active {
+                color: $font;
+                background-color: $--nav-selected-bg;
+            }
+        }
+
+        .popper__arrow {
+            display: none;
+        }
+    }
+}

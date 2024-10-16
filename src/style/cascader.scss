@@ -1,0 +1,133 @@
+// 级联选择器样式
+.el-cascader {
+    width: 100%;
+    border-color: $border;
+    &:not(.is-disabled):hover .el-input__inner {
+        border-color: $border;
+    }
+    .el-input {
+        &.el-input--suffix {
+            display: flex;
+            align-items: center;
+            .el-input__suffix {
+                right: 0;
+                .el-input__icon {
+                    &.el-icon-arrow-down {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 24px;
+                        height: 24px;
+                        margin: 4px;
+                        line-height: 24px;
+                        background-color: $--upload-text;
+                        mask-image: url(../assets/svg-icon/common_angle_down_sm.svg);
+                    }
+                    &.el-icon-circle-close {
+                        margin-right: 4px;
+                        mask-image: url(../assets/svg-icon/common_close_f.svg);
+                        background-color: $--text-dim;
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .el-input .el-input__inner:focus,
+    .el-input.is-focus .el-input__inner {
+        border: 1px solid $primary;
+        border-radius: 2px;
+        box-shadow: 0 0 4px 2px $--table-tr-selected-color;
+    }
+    &.is-disabled {
+        .el-input {
+            .el-input__inner {
+                border: 1px solid $--btn-border-color;
+                color: $--text-disabled;
+                background-color: $background;
+            }
+        }
+    }
+}
+
+.el-cascader__dropdown {
+    @include dropdown-shadow;
+    border-radius: 2px;
+    border: solid 1px $--table-tr-border-color;
+    background-color: $white;
+    &.el-popper[x-placement^="bottom"] {
+        margin-top: 4px;
+    }
+    .popper__arrow {
+        display: none;
+    }
+    .el-cascader-panel {
+        .el-cascader-menu {
+            min-width: 160px;
+            padding: 4px;
+            border-right: solid 1px $--table-tr-border-color;
+            &:first-child {
+                border-radius: 2px 0 0 2px;
+            }
+            &:last-child {
+                border-right: none;
+                border-radius: 0 2px 2px 0;
+            }
+            .el-cascader-menu__wrap {
+                max-height: 175px;
+                .el-cascader-menu__list {
+                    padding: 0;
+                    .el-cascader-node {
+                        display: flex;
+                        height: 32px;
+                        line-height: 32px;
+                        padding: 6px 24px 6px 4px !important;
+                        border-radius: 2px;
+                        &.is-disabled {
+                            opacity: 0.4;
+                        }
+                        &:hover {
+                            background-color: $background !important;
+                        }
+                        &.in-active-path {
+                            background-color: $primary-1;
+                        }
+
+                        &.is-active {
+                            background-color: $primary-1;
+                        }
+
+                        &.is-selectable.in-checked-path {
+                            background-color: $--table-header-color !important;
+                            .el-icon-check.el-cascader-node__prefix {
+                                display: none;
+                            }
+                        }
+                        .el-cascader-node__label {
+                            padding: 0;
+                            height: 20px;
+                            font-size: 14px;
+                            font-weight: normal;
+                            color: $font;
+                            line-height: 20px;
+                        }
+                        .el-cascader-node__postfix {
+                            right: 0;
+                            height: 24px;
+                            width: 24px;
+                            // margin: 4px 0;
+                            padding: 5px;
+                            text-align: center;
+                            color: $font;
+                        }
+                        .el-icon-check {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

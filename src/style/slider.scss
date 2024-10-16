@@ -1,0 +1,147 @@
+.el-slider {
+    --inputNumHeight: 32px;
+    .el-slider__runway {
+        height: 4px;
+        border-radius: 2px;
+        background-color: $border;
+        margin: 14px 0;
+        .el-slider__bar {
+            height: 4px;
+            border-radius: 2px;
+            background-color: $primary;
+        }
+        .el-slider__button-wrapper {
+            width: 16px;
+            height: 16px;
+            top: 1px;
+            transform: translate(-50%, -50%);
+            .el-slider__button {
+                width: 16px;
+                height: 16px;
+                background: #FFFFFF;
+                border: 2px solid #DADDE6;
+                vertical-align: inherit;
+                &.hover {
+                    transform: scale(1);
+                }
+                &:hover {
+                    transform: scale(1);
+                    border: 2px solid $primary;
+                }
+            }
+        }
+        &.disabled {
+            .el-slider__bar {
+                background-color: #B8BED5;
+            }
+            .el-slider__button-wrapper {
+                .el-slider__button {
+                    border: 2px solid $border;
+                }
+            }
+        }
+    }
+    &.el-slider--with-input {
+        .el-input-number--small {
+            width: 80px;
+            margin-top: calc((32px - var(--inputNumHeight)) / 2 );
+            height: var(--inputNumHeight);
+            line-height: var(--inputNumHeight);
+            .el-input-number__decrease, .el-input-number__increase {
+                right: 1px;
+                left: auto;
+                top: auto;
+                bottom: 1px;
+                border-right: none;
+                border-left: 1px solid $border-3;
+                border-top: 1px solid $border-3;
+                width: 24px;
+                border-radius: 0 0 2px 0;
+                line-height: calc(var(--inputNumHeight) / 2 - 1px);
+                height: calc(var(--inputNumHeight) / 2 - 1px);
+                background-color: $white;
+                overflow: hidden;
+                box-sizing: border-box;
+                .el-icon-minus, .el-icon-plus {
+                    transform: translate(50%, -50%);
+                    position: absolute;
+                    top: 50%;
+                    right: 50%;
+                    width: 24px;
+                    height: 24px;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        transform: translateY(-50%);
+                        top: 50%;
+                        left: -1px;
+                        width: 24px;
+                        height: 24px;
+                        background-color: $font-3;
+                        mask-image: url("../assets/svg-icon/common_angle_down_sm.svg");
+                    }
+                }
+                &:hover {
+                    &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+                        border-color: $primary;
+                        box-shadow: 0 0 4px 2px $--selected-primary;
+                    }
+                    background-color: $background;
+                    .el-icon-minus, .el-icon-plus {
+                        &::before {
+                            background-color: $font;
+                        }
+                    }
+                }
+                
+            }
+            .el-input-number__increase {
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                border-top: none;
+                border-left: 1px solid $border-3;
+                border-right: none;
+                .el-icon-plus {
+                    &::before {
+                        mask-image: url("../assets/svg-icon/common_angle_up_sm.svg");
+                    }
+                }
+            }
+            .el-input {
+                .el-input__inner {
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding: 0 32px 0 8px;
+                    text-align: left;
+                    height: var(--inputNumHeight);
+                    line-height: calc(var(--inputNumHeight) / 2 - 1px);
+                    &:focus {
+                        border-color: $primary;
+                        box-shadow: 0 0 4px 2px $--selected-primary;
+                    }
+                }
+            }
+            &.is-disabled {
+                .el-input-number__decrease, .el-input-number__increase { 
+                    background-color: $background;
+                    .el-icon-minus, .el-icon-plus {
+                        &::before {
+                            background-color:$--text-disabled;
+                        }
+                    }
+                    &:hover {
+                        &:not(.is-disabled) ~ .el-input .el-input__inner:not(.is-disabled) {
+                            border-color: $border-3;
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+        .el-slider__runway.show-input {
+            width: calc(100% - 80px - 20px);
+            background-color: $border;
+        }
+    }
+}

@@ -1,0 +1,146 @@
+// tabs标签页样式
+.el-tabs {
+    // 默认边框在下
+    .el-tabs__header {
+        .el-tabs__nav-wrap {
+            padding: 0;
+            // width: calc(106px * var(--tabsNumber));
+            // width: 318px;
+            &:after {
+                height: 1px;
+                right: 0;
+                width: auto;
+                // width: calc(100% - 24px - 24px);
+                background-color: $border;
+            }
+
+            // 下面选中高亮边框
+            .el-tabs__active-bar {
+                height: 2px;
+                background-color: $primary;
+            }
+            // 有左右箭头样式
+            &.is-scrollable {
+                position: relative;
+                // width: 366px;
+                // width: calc(106px * var(--tabsNumber) + 24px + 24px);
+                padding: 0 24px;
+                .el-tabs__nav-prev {
+                    position: absolute;
+                    left: 0;
+                }
+                .el-tabs__nav-next {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+                .el-tabs__nav-scroll {
+                    .el-tabs__nav.is-top.is-stretch {
+                        & > * {
+                            flex: none;
+                            width: 106px !important;
+                        }
+                    }
+                }
+                &::after {
+                    left: 24px;
+                    right: 24px;
+                    // width: calc(100% - 24px - 24px);
+                }
+            }
+        }
+    }
+
+    .el-tabs__item {
+        width: 106px;
+        padding: 0;
+        font-size: 14px;
+        font-weight: normal;
+        color: $black-3;
+        font-weight: 400;
+
+        &.is-active {
+            font-family: MicrosoftYaHei-Bold;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        &.is-disabled {
+            cursor: not-allowed;
+            color: $--text-disabled;
+        }
+    }
+
+    .el-tabs__nav-prev,
+    .el-tabs__nav-next {
+        font-size: 14px;
+        color: $black-3;
+
+        &.is-disabled {
+            cursor: not-allowed;
+            color: $black-5;
+        }
+    }
+
+    // 边框在上
+    &[border-position="top"] {
+        .el-tabs__nav-wrap {
+            &:after {
+                top: 0;
+            }
+
+            .el-tabs__active-bar {
+                top: 0;
+            }
+        }
+    }
+
+    // 卡片标签页
+    &.el-tabs--card {
+        > .el-tabs__header {
+            .el-tabs__nav {
+            }
+        }
+        .el-tabs__header {
+            width: fit-content;
+            border-color: $--btn-border-color;
+            .el-tabs__nav-wrap.is-top {
+                width: fit-content;
+                .el-tabs__nav-prev {
+                }
+                .el-icon-arrow-left {
+                }
+                .el-tabs__nav-scroll {
+                    .el-tabs__nav.is-top.is-stretch {
+                        border-radius: 2px 2px 0 0;
+                        .el-tabs__item {
+                            flex: none;
+                            overflow: hidden;
+                            max-width: 192px;
+                            height: 31px;
+                            padding: 0 24px;
+                            line-height: 31px;
+                            color: $font;
+                            text-overflow: ellipsis;
+                            font-family: MicrosoftYaHei;
+                            &.is-active {
+                                &.is-top {
+                                    font-family: MicrosoftYaHei;
+                                    color: $primary;
+                                    text-overflow: ellipsis;
+                                    line-height: 31px;
+                                    font-weight: 400;
+                                }
+                            }
+                            &.is-disabled {
+                                background: $background;
+                                border-bottom: 1px solid $--btn-border-color;
+                                color: $--text-disabled;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

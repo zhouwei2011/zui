@@ -1,0 +1,67 @@
+.processing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    user-select: none;
+    z-index: 100;
+    &.full-screen {
+        position: fixed;
+    }
+    &.show-modal {
+        background-color: $--mask;
+    }
+    .box {
+        display: flex;
+        align-items: center;
+        width: 64px;
+        height: 64px;
+        .barrier {
+            width: 8px;
+            background-color: $primary;
+            transform: rotate(6deg);
+            &:first-child {
+                height: 16px;
+                animation: loading1 1.2s ease-in-out forwards infinite;
+                + .icon {
+                    height: 24px;
+                    animation: loading2 1.2s ease-in-out forwards infinite;
+                    + .icon {
+                        height: 32px;
+                        animation: loading3 1.2s ease-in-out forwards infinite;
+                        + .icon {
+                            height: 40px;
+                            animation: loading4 1.2s ease-in-out forwards infinite;
+                        }
+                    }
+                }
+            }
+            &:not(:first-child) {
+                margin-left: 8px;
+            }
+        }
+    }
+    > p {
+        margin-top: 4px;
+        line-height: 24px;
+        font-size: 16px;
+        color: $--text-color;
+        .dot {
+            vertical-align: bottom;
+            &:first-child {
+                animation: dot1 1.2s forwards infinite;
+                + .dot {
+                    animation: dot2 1.2s forwards infinite;
+                    + .dot {
+                        animation: dot3 1.2s forwards infinite;
+                    }
+                }
+            }
+        }
+    }
+}

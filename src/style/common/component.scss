@@ -1,0 +1,333 @@
+// 查看表格
+.zrx-inspect-table {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 1px 1px;
+    align-content: start;
+    border: 1px solid $border;
+    border-radius: 2px;
+    background-color: $border;
+    overflow: hidden;
+    &:not(.large) {
+        .label {
+            min-height: 35px;
+            line-height: 35px;
+        }
+        .text {
+            min-height: 35px;
+            padding: 5px 12px 6px;
+        }
+        .context {
+            min-height: 35px;
+            padding: 5px 12px 6px;
+        }
+    }
+    &.large {
+        .label {
+            min-height: 39px;
+            line-height: 39px;
+        }
+        .text {
+            min-height: 39px;
+            padding: 7px 12px 8px;
+        }
+        .context {
+            min-height: 39px;
+            padding: 7px 12px 8px;
+        }
+    }
+    > .zrx-empty-state {
+        grid-column: 1 / span 2;
+        justify-self: stretch;
+        background-color: $white;
+    }
+    > div {
+        display: flex;
+        align-content: flex-start;
+        align-items: stretch;
+        &:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
+        .label {
+            flex: 0 0 auto;
+            width: var(--labelW, 144px);
+            padding: 0 12px;
+            border-right: 1px solid $border;
+            user-select: none;
+            @include ellipsis;
+            color: $--text-dim;
+            background-color: $background;
+            + * {
+                background-color: $white;
+            }
+        }
+        .text {
+            flex: 1 1 auto;
+            line-height: 24px;
+            color: $--text-light;
+            &:not(.wrap) {
+                @include ellipsis;
+            }
+            &.wrap {
+                word-break: break-all;
+            }
+        }
+        .context {
+            flex: 1 1 auto;
+            line-height: 24px;
+            color: $--text-light;
+        }
+        &.span-2 {
+            grid-column: span 2;
+        }
+    }
+}
+// 查看表单
+.zrx-view-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    align-content: start;
+    grid-gap: 24px 32px;
+    overflow: hidden;
+    &.col-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    &.col-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    &.col-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    &.row-3 {
+        grid-template-rows: repeat(3, 48px);
+    }
+    > * {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        > .label,
+        > .text {
+            max-width: 100%;
+        }
+        > .label {
+            flex: 0 0 auto;
+            height: 20px;
+            line-height: 20px;
+            color: $--text-dim;
+            @include ellipsis;
+        }
+        > .text {
+            min-height: 24px;
+            margin-top: 4px;
+            line-height: 24px;
+            @include empty;
+            &:not(.wrap) {
+                @include ellipsis;
+            }
+            &.wrap {
+                word-break: break-all;
+            }
+        }
+        > .content {
+            flex: 1 1 auto;
+            width: 100%;
+            min-height: 24px;
+            margin-top: 4px;
+        }
+    }
+}
+// 下拉列表
+.zrx-dropdown-menu {
+    position: relative;
+    padding: 0;
+    line-height: 1;
+    font-size: 14px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &:not(.multiple) {
+        .dropdown-item {
+            &:not([disabled]) {
+                &.selected {
+                    background-color: $--selected-primary;
+                }
+            }
+        }
+    }
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 32px;
+        padding-left: 4px;
+        cursor: pointer;
+        background-color: $white;
+        &:not(:last-of-type) {
+            margin-bottom: 2px;
+        }
+        &:first-of-type {
+            border-radius: 2px 2px 0 0;
+        }
+        &:last-of-type {
+            border-radius: 0 0 2px 2px;
+        }
+        &[disabled] {
+            color: $--text-disabled;
+            cursor: not-allowed;
+        }
+        &:not([disabled]) {
+            &:hover {
+                background-color: $--hover-primary;
+            }
+        }
+        .el-checkbox {
+            flex: 0 0 auto;
+            display: flex;
+            width: 24px;
+            height: 24px;
+            margin-right: 4px;
+            .el-checkbox__input {
+                margin: auto;
+            }
+        }
+        .zrx-checkbox {
+            flex: 0 0 auto;
+            margin-right: 4px;
+        }
+        > .label {
+            flex: 1 1 auto;
+            line-height: 20px;
+            @include ellipsis;
+            transform: translateY(-1px);
+        }
+    }
+}
+// 带标签的输入框
+.zrx-tandem-input {
+    display: flex;
+    height: 32px;
+    > .label {
+        flex: 0 0 auto;
+        width: 88px;
+        line-height: 30px;
+        border: 1px solid $border;
+        border-right: none;
+        border-radius: 2px 0 0 2px;
+        text-align: center;
+        color: $--text-dim;
+        user-select: none;
+        white-space: nowrap;
+        background-color: $background;
+        + * {
+            width: calc(100% - 88px);
+            &.el-input .el-input__inner,
+            &.el-select .el-input__inner,
+            &.zrx-time-picker,
+            &.zrx-date-time-picker,
+            &.zrx-drop-tree,
+            &.zrx-multiple-select {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+}
+.zrx-checkbox {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+    line-height: 0;
+    .checkbox-inner {
+        position: relative;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border: 1px solid $--table-tr-border-color;
+        border-radius: 1px;
+        cursor: pointer;
+        transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
+            background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
+        &:hover {
+            border-color: $--radio-hover-border;
+            background-color: $--tag-blue-background-color;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0.5px;
+            left: 3px;
+            width: 4px;
+            height: 8px;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 1.5px 1.5px 0;
+            border-radius: 1px;
+            transform: rotate(45deg) scaleY(0);
+            transition: transform 0.15s ease-in 0.05s;
+        }
+    }
+    &.is-indeterminate {
+        .checkbox-inner {
+            border: 1px solid $--table-tr-border-color;
+            background-color: $white;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 25%;
+                left: 25%;
+                width: 6px;
+                height: 6px;
+                display: block;
+                border-radius: 1px;
+                background-color: $primary;
+            }
+            &:hover {
+                border-color: $--radio-hover-border;
+                background-color: $--tag-blue-background-color;
+                &:before {
+                    background-color: $--radio-hover-border;
+                }
+            }
+        }
+    }
+    &.is-checked {
+        .checkbox-inner {
+            border: 1px solid $--table-tr-border-color;
+            background-color: $white;
+            &::after {
+                border-color: $--checkbox-normal-selected;
+                transform: rotate(45deg) scaleY(1);
+            }
+            &:hover {
+                border-color: $--radio-hover-border;
+                background-color: $--tag-blue-background-color;
+                &:after {
+                    border-color: $--radio-hover-border;
+                }
+            }
+        }
+    }
+    &.is-disabled {
+        .checkbox-inner {
+            border-color: $--table-tr-border-color;
+            cursor: not-allowed;
+            background-color: $background;
+        }
+        &.is-checked {
+            .checkbox-inner {
+                border-color: $--table-tr-border-color;
+                background-color: $background;
+                &:hover {
+                    border-color: $--table-tr-border-color;
+                    background-color: $background;
+                    &:after {
+                        border-color: $--text-disabled;
+                    }
+                }
+                &:after {
+                    border-color: $--text-disabled;
+                }
+            }
+        }
+    }
+}

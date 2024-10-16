@@ -1,0 +1,101 @@
+// 下面颜色变量为rgb
+:root {
+    --primary: 64, 95, 254;
+    --primary-1: 236, 239, 254;
+    --primary-2: 167, 183, 254;
+    --primary-3: 102, 127, 254;
+    --primary-4: 57, 85, 228;
+    --selected: 66, 99, 254;
+    --hover: 59, 65, 85;
+    --warning: 250, 173, 20;
+    --warning-2: 255, 229, 143;
+    --warning-3: 255, 251, 230;
+    --warning-4: 255, 164, 51;
+    --success: 82, 196, 26;
+    --success-2: 183, 235, 143;
+    --success-3: 246, 255, 237;
+    --success-4: 2, 191, 15;
+    --error: 240, 70, 90;
+    --error-2: 255, 163, 158;
+    --error-3: 255, 242, 241;
+    --error-4: 243, 107, 123;
+    --error-5: 215, 62, 80;
+    --border: 218, 221, 230; //#DADDE6
+    --border-2: 213, 214, 227;
+    --border-3: 220, 223, 232;
+    --gray-1: 244, 245, 248; // #f4f5f8
+    --gray-2: 232, 234, 240; // #E8EAF0
+    --dark: 0, 12, 23;
+    --dark-2: 0, 21, 41;
+    --white: 255, 255, 255;
+    --shadow: 0, 0, 0;
+    --black: 0, 0, 0;
+    --app-name-text: 255, 255, 255;
+    --left-side-bg: 0, 21, 41;
+    --menu-bg: 0, 21, 41;
+    --menu-active: 1, 132, 255;
+    --menu-hover: 0, 21, 41;
+    --menu-text: 255, 255, 255;
+    --menu-text-active: 255, 255, 255;
+    --top-bar: 255, 255, 255;
+    --disabled: 246, 247, 252;
+    --tooltip-dark: 48, 49, 51;
+    --tooltip-dark-text-color: 255, 255, 255;
+    --nav-bg: 0, 21, 41;
+    --nav-bg-dropped: 0, 12, 23;
+    --nav-text: 59, 65, 85;
+    --nav-hover-bg: 59, 65, 85;
+    --nav-selected-bg: 66, 99, 254;
+    --nav-selected-icon: 64, 95, 254;
+    --font: 59, 65, 85;
+    --background: 244, 245, 248;
+    --table-header-color: 244, 245, 248;
+    --table-tr-hover-color: 59, 65, 85;
+    --table-tr-selected-color: 66, 99, 254;
+    --table-tr-border-color: 220, 223, 232;
+    --table-scroll-color: 232, 232, 232;
+    //tag标签相关颜色
+    --tag-default-border-color: 220, 223, 232; //tag标签默认border颜色
+    --tag-default-background-color: 244, 245, 248; //tag标签默认background颜色
+    --tag-default-color: 59, 65, 85; //tag标签默认color颜色
+    --tag-default-icon-close-color: 0, 0, 0; //tag标签默认关闭按钮颜色
+    --tag-default-icon-close-hover-color: 66, 99, 254; //tag标签默认关闭按钮hover颜色
+    --tag-white-background-color: 255, 255, 255; //tag标签white background颜色
+    --tag-grey-background-color: 244, 245, 248; //tag标签grey background颜色
+    --tag-blue-border-color: 167, 183, 254; //tag标签blue border颜色
+    --tag-blue-background-color: 236, 239, 254; //tag标签blue background颜色
+    --tag-blue-color: 64, 95, 254; //tag标签blue color颜色
+    --tag-green-border-color: 164, 229, 209; //tag标签green border颜色
+    --tag-green-background-color: 232, 248, 243; //tag标签green background颜色
+    --tag-green-color: 27, 190, 140; //tag标签green color颜色
+    --tag-orange-border-color: 255, 213, 160; //tag标签orange border颜色
+    --tag-orange-background-color: 255, 245, 234; //tag标签orange background颜色
+    --tag-orange-color: 255, 164, 51; //tag标签orange color颜色
+    --tag-red-border-color: 249, 181, 189; //tag标签red border颜色
+    --tag-red-background-color: 253, 236, 238; //tag标签red background颜色
+    --tag-red-color: 240, 70, 90; //tag标签red color颜色
+    //tooltip样式相关颜色
+    --tooltip-background-color: 244, 245, 248; //tooltip background颜色
+    --tooltip-shadow-color: 0, 0, 0; //tooltip shadow颜色
+
+    --click-scroll-color: 59, 65, 85;
+    --mask: 0, 0, 0;
+    --radio-hover-inner: 236, 239, 254;
+    --radio-hover-border: 102, 127, 254;
+    --radio-hover-inner-unchecked: 232, 234, 240;
+
+    --primary-focus: 57, 85, 228;
+
+    --button-disabled-content: 244, 245, 248;
+
+    --tabs-border: 224, 224, 224;
+
+    --tree-background-color: 250, 50, 57;
+    --tree-hover: 254, 208, 210;
+    --tree-focus: 237, 214, 228;
+
+    // --date-current: 230, 242, 255;
+    --date-current: 236, 239, 254;
+
+    --default-scroll-color: 59, 65, 85;
+}

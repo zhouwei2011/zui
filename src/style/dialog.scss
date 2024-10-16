@@ -1,0 +1,206 @@
+.el-dialog {
+    &.zrx-dialog {
+        border-radius: 2px;
+        box-shadow: 0 0 16px 0 getColorVar(--black, 0.2), 0 16px 32px 0 getColorVar(--black, 0.12);
+        &.center {
+            margin-top: 0 !important;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &.tiny {
+            width: 320px;
+        }
+        &.smaller {
+            width: 400px;
+        }
+        &.small {
+            width: 480px;
+        }
+        &.medium {
+            width: 560px;
+        }
+        &.big {
+            width: 640px;
+        }
+        &.bigger {
+            width: 720px;
+        }
+        &.large {
+            width: 800px;
+        }
+        &.larger {
+            width: 880px;
+        }
+        .el-dialog__header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: $--dialog-header-height;
+            padding: 0 8px 0 16px;
+            border-bottom: 1px solid $border;
+            z-index: 10;
+            .el-dialog__title {
+                flex: 1 1 auto;
+                line-height: 20px;
+                font-size: 14px;
+                @include boldFont;
+                @include ellipsis;
+            }
+            .el-dialog-btn {
+                flex: 0 0 auto;
+            }
+            .el-dialog__headerbtn {
+                position: static;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                .el-dialog__close {
+                    width: 24px;
+                    height: 24px;
+                    background-color: $--text-color;
+                    mask-image: url('../assets/svg-icon/common_close.svg');
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+        }
+        .el-dialog__body {
+            padding: 0;
+            min-height: 100px;
+            color: $--text-color;
+            z-index: 5;
+            .el-dialog-content {
+                max-height: var(--dialog-max-height, 544px);
+                height: var(--content-height, 'auto');
+                min-height: var(--content-min-height, 'none');
+                padding: 16px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
+        .el-dialog__footer {
+            z-index: 10;
+            border-top: 1px solid $border;
+            padding: $--dialog-padding;
+            height: $--dialog-footer-height;
+            line-height: $--dialog-footer-height;
+            background-color: $--dialog-footer-bg;
+            > .el-button:not(:first-of-type) {
+                margin-left: 8px;
+            }
+        }
+    }
+}
+
+// 修复部分情况下对话框居中导致边框模糊的问题，请使用class="align-center zrx-dialog"类名来实现样式重置
+.el-dialog__wrapper {
+    &.align-center {
+        @include flex-center;
+        flex-direction: column;
+
+        .el-dialog {
+            margin: 0 !important;
+        }
+    }
+
+    &.zrx-dialog {
+        .el-dialog {
+            border-radius: 2px;
+            box-shadow: 0 0 16px 0 getColorVar(--black, 0.2), 0 16px 32px 0 getColorVar(--black, 0.12);
+
+            &.tiny {
+                width: 320px;
+            }
+            &.smaller {
+                width: 400px;
+            }
+            &.small {
+                width: 480px;
+            }
+            &.medium {
+                width: 560px;
+            }
+            &.big {
+                width: 640px;
+            }
+            &.bigger {
+                width: 720px;
+            }
+            &.large {
+                width: 800px;
+            }
+            &.larger {
+                width: 880px;
+            }
+
+            > div {
+                width: 100%;
+            }
+
+            .el-dialog__header {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: $--dialog-header-height;
+                padding: 0 8px 0 16px;
+                border-bottom: 1px solid $border;
+                z-index: 10;
+                .el-dialog__title {
+                    flex: 1 1 auto;
+                    line-height: 20px;
+                    font-size: 14px;
+                    @include boldFont;
+                    @include ellipsis;
+                }
+                .el-dialog-btn {
+                    flex: 0 0 auto;
+                }
+                .el-dialog__headerbtn {
+                    position: static;
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    .el-dialog__close {
+                        width: 24px;
+                        height: 24px;
+                        background-color: $--text-color;
+                        mask-image: url('../assets/svg-icon/common_close.svg');
+                        &::before {
+                            content: none;
+                        }
+                    }
+                }
+            }
+            .el-dialog__body {
+                padding: 0;
+                min-height: 100px;
+                color: $--text-color;
+                z-index: 5;
+                .el-dialog-content {
+                    max-height: var(--dialog-max-height, 544px);
+                    height: var(--content-height, 'auto');
+                    min-height: var(--content-min-height, 'none');
+                    padding: 16px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                }
+            }
+            .el-dialog__footer {
+                z-index: 10;
+                border-top: 1px solid $border;
+                padding: $--dialog-padding;
+                height: $--dialog-footer-height;
+                line-height: $--dialog-footer-height;
+                background-color: $--dialog-footer-bg;
+                > .el-button:not(:first-of-type) {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}
+
+.v-modal {
+    background: $--mask;
+}

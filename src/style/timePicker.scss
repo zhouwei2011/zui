@@ -1,0 +1,378 @@
+// .timePicker-demo {
+.zrx-time-picker {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 31px;
+    grid-template-rows: 30px;
+    border: 1px solid $--btn-border-color;
+    border-radius: 2px;
+    background-color: $white;
+    .zrx-icon-clock {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        z-index: 1;
+        transition: opacity 0.25s;
+        transform: translate(0, -50%);
+        // width: 14px;
+        // height: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        background-color: $--text-dim;
+    }
+    &.focus {
+        border: 1px solid $primary;
+        box-shadow: 0 0 4px 2px $--selected-primary;
+    }
+    input {
+        border: none;
+        padding: 0 0 0 8px;
+        background-color: transparent;
+    }
+    .icon {
+        // width: 24px;
+        // height: 24px;
+        // margin: 4px;
+        // background-color: $--upload-text;
+        // mask-image: url(../assets/svg-icon/common_clock.svg);
+        // &::before {
+        //     content: none;
+        // }
+    }
+    .panel {
+        position: absolute;
+        z-index: 10;
+        display: grid;
+        transition: opacity 0.25s, transform 0.25s;
+        width: 148px;
+        border-radius: 2px;
+        box-shadow: 0 0 4px 2px $--selected-primary;
+        background-color: $white;
+        grid-template-rows: minmax(0, 230px) 39px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        .hour,
+        .minute {
+            border-right: 1px solid $--btn-border-color;
+        }
+        .hour {
+            // background-color: red;
+            .time-item {
+                margin: 2px 0 2px 2px;
+                border-radius: 2px 0 0 2px;
+                cursor: pointer;
+                line-height: 32px;
+                font-size: 14px;
+                text-align: center;
+                color: $font;
+                &:hover {
+                    background-color: $background;
+                }
+                &.current {
+                    background-color: $primary-1;
+                }
+            }
+        }
+        .minute {
+            .time-item {
+                margin: 2px 0 2px 0;
+                cursor: pointer;
+                font-size: 14px;
+                color: $font;
+                text-align: center;
+                line-height: 32px;
+
+                &:hover {
+                    background-color: $background;
+                }
+                &.current {
+                    background-color: $primary-1;
+                }
+            }
+        }
+        .second {
+            .time-item {
+                margin: 2px 2px 2px 0;
+                border-radius: 0 2px 2px 0;
+                cursor: pointer;
+                text-align: center;
+                line-height: 32px;
+                font-size: 14px;
+                color: $font;
+
+                &:hover {
+                    background-color: $background;
+                }
+                &.current {
+                    background-color: $primary-1;
+                }
+            }
+        }
+        .panel-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 40px;
+            padding: 4px;
+            border-top: 1px solid $--btn-border-color;
+            grid-column-start: 1;
+            grid-column-end: 4;
+
+            .el-button {
+                min-width: auto;
+                width: 44px;
+                padding-left: 0;
+                padding-right: 0;
+                vertical-align: middle;
+                &.is-disabled {
+                    border: 1px solid $--btn-border-color;
+                    border-radius: 2px;
+                    background: $background;
+                }
+                &.el-button--primary {
+                    &:not(.is-disabled) {
+                        border: 1px solid $primary;
+                        background: $primary;
+                        color: $white;
+                        &:hover {
+                            border-color: $--btn-primary-bg-hover;
+                            background-color: $--btn-primary-bg-hover;
+                        }
+                        &:focus {
+                            border-color: $--btn-primary-bg-focus;
+                            background-color: $--btn-primary-bg-focus;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.disabled {
+        border-color: $border;
+        cursor: not-allowed;
+        background-color: $disabled;
+        input {
+            pointer-events: none;
+            color: $--text-color-disabled;
+        }
+    }
+    .clear-btn {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        z-index: 1;
+        transition: opacity 0.25s;
+        transform: translate(0, -50%);
+        // width: 14px;
+        // height: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+
+        &.visible {
+            // top: 12px;
+            // right: 0;
+            // width: 24px;
+            // height: 24px;
+            // margin: 4px;
+            // mask-image: url(../assets/svg-icon/common_close_f.svg);
+            // background-color: $--upload-text;
+            // &::before {
+            //     content: none;
+            // }
+        }
+        &.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        &:before {
+            transform: scale(0.75);
+        }
+    }
+}
+// }
+
+.zrx-time-picker-panel {
+    position: absolute;
+    z-index: 10;
+    display: grid;
+    transition: opacity 0.25s, transform 0.25s;
+    padding: 0;
+    pointer-events: none;
+    border: 1px solid $--btn-border-color;
+    border-radius: 2px;
+    background-color: $white;
+    grid-template-rows: minmax(0, 230px) 39px;
+    @include dropdown-shadow;
+    transform: scale(1, 0);
+    &.range {
+        width: 330px;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) 32px repeat(3, minmax(0, 1fr));
+        .hour:nth-child(4) {
+            // grid-column-start: 5;
+            // border-left: 1px solid $--btn-border-color;
+        }
+        .second:nth-child(3) {
+            // border-right: 1px solid $--btn-border-color;
+        }
+        .panel-gap {
+            align-self: center;
+            justify-self: center;
+            grid-row-start: 1;
+        }
+        &.repeat-1 {
+            .hour,
+            .minute,
+            .second {
+                &:nth-child(1) {
+                    border-right: 1px solid $--btn-border-color;
+                }
+                &:nth-child(2) {
+                    border-left: 1px solid $--btn-border-color;
+                }
+            }
+            .panel-gap {
+                grid-column-start: 2;
+            }
+        }
+        &.repeat-2 {
+            .hour,
+            .minute,
+            .second {
+                &:nth-child(1),
+                &:nth-child(2) {
+                    border-right: 1px solid $--btn-border-color;
+                }
+                &:nth-child(3),
+                &:nth-child(4) {
+                    border-left: 1px solid $--btn-border-color;
+                }
+            }
+            .panel-gap {
+                grid-column-start: 3;
+            }
+        }
+        &.repeat-3 {
+            .hour,
+            .minute,
+            .second {
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3) {
+                    border-right: 1px solid $--btn-border-color;
+                }
+                &:nth-child(4),
+                &:nth-child(5),
+                &:nth-child(6) {
+                    border-left: 1px solid $--btn-border-color;
+                }
+            }
+            .panel-gap {
+                grid-column-start: 4;
+            }
+        }
+    }
+    &:not(.range) {
+        &.repeat-1 {
+            .hour,
+            .minute,
+            .second {
+            }
+        }
+        &.repeat-2 {
+            .hour,
+            .minute,
+            .second {
+                &:nth-child(1) {
+                    border-right: 1px solid $--btn-border-color;
+                }
+            }
+        }
+        &.repeat-3 {
+            .hour,
+            .minute,
+            .second {
+                &:nth-child(1),
+                &:nth-child(2) {
+                    border-right: 1px solid $--btn-border-color;
+                }
+            }
+        }
+    }
+    .hour,
+    .minute {
+        // border-right: 1px solid $--btn-border-color;
+    }
+    .el-scrollbar {
+        .el-scrollbar__wrap {
+            height: 230px;
+        }
+        .time-item {
+            border-radius: 2px;
+            cursor: pointer;
+            color: $font;
+            font-size: 14px;
+            text-align: center;
+            line-height: 32px;
+            &:hover {
+                background-color: $background;
+            }
+            &.current {
+                background-color: $primary-1;
+            }
+        }
+        &.hour {
+            padding: 3px 0 3px 3px;
+        }
+        &.minute {
+            padding: 3px 0 3px 0;
+        }
+        &.second {
+            padding: 3px 3px 3px 0;
+        }
+    }
+    .panel-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 40px;
+        padding: 4px 3px;
+        border-top: 1px solid $--btn-border-color;
+        grid-column-start: 1;
+        grid-column-end: -1;
+        .el-button {
+            border: 1px solid $primary;
+            border-radius: 2px;
+            height: 32px;
+            min-width: auto;
+            padding: 0 7px;
+            text-align: center;
+            line-height: 32px;
+            &.is-disabled {
+                padding: 0 7px;
+                border: 1px solid $--btn-border-color;
+                border-radius: 2px;
+                background: $background;
+                color: $--text-disabled;
+            }
+            &.el-button--primary {
+                &:not(.is-disabled) {
+                    background: $primary;
+                    color: $white;
+                    &:hover {
+                        border-color: $--btn-primary-bg-hover;
+                        background-color: $--btn-primary-bg-hover;
+                    }
+                    &:focus {
+                        border-color: $--btn-primary-bg-focus;
+                        background-color: $--btn-primary-bg-focus;
+                    }
+                }
+            }
+        }
+    }
+}

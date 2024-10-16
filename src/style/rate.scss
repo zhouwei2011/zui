@@ -1,0 +1,221 @@
+.el-rate {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    &[aria-valuenow="0"] {
+        .el-rate__item {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="0.5"] {
+        .el-rate__item {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="1"] {
+        .el-rate__item:nth-child(n + 2) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="1.5"] {
+        .el-rate__item:nth-child(n + 2) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="2"] {
+        .el-rate__item:nth-child(n + 3) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="2.5"] {
+        .el-rate__item:nth-child(n + 3) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="3"] {
+        .el-rate__item:nth-child(n + 4) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="3.5"] {
+        .el-rate__item:nth-child(n + 4) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="4"] {
+        .el-rate__item:nth-child(n + 5) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="4.5"] {
+        .el-rate__item:nth-child(n + 5) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    &[aria-valuenow="5"] {
+        .el-rate__item:nth-child(n + 6) {
+            height: 100%;
+            .el-rate__icon {
+                &.el-icon-star-on {
+                    &::before {
+                        background-color: $--btn-border-color;
+                    }
+                }
+            }
+        }
+    }
+    .el-rate__item {
+        height: 100%;
+        &:not(:last-child) {
+            margin-right: 6px;
+        }
+        .el-rate__icon {
+            height: 100%;
+            margin-right: 0;
+            font-size: 24px;
+            // 控制一般状态下的边框颜色
+            color: $--nav-text-tab !important;
+
+            &.el-icon-star-off {
+                i {
+                    // 控制半选的颜色
+                    height: 24px;
+                    color: $primary !important;
+                }
+                &:has(> .el-icon-star-on) {
+                    &::before {
+                        display: inline-block;
+                        content: "";
+                        mask-image: url("../assets/svg-icon/common_star.svg");
+                        width: 24px;
+                        height: 24px;
+                        background-color: $primary;
+                    }
+                }
+                &::before {
+                    display: inline-block;
+                    content: "";
+                    mask-image: url("../assets/svg-icon/common_star.svg");
+                    width: 24px;
+                    height: 24px;
+                    background-color: $font-3;
+                }
+                color: $font-3;
+                &:active {
+                    // 控制半选hover状态下边框的颜色
+                    color: $primary !important;
+                }
+                > .el-icon-star-on {
+                    &::before {
+                        display: inline-block;
+                        content: "";
+                        mask-image: url("../assets/svg-icon/common_star_f.svg");
+                        width: 24px;
+                        height: 24px;
+                        background-color: $primary;
+                    }
+                }
+            }
+            &.el-icon-star-on {
+                // 控制全选状态下星的颜色
+                &::before {
+                    color: $primary;
+                    display: inline-block;
+                    content: "";
+                    mask-image: url("../assets/svg-icon/common_star_f.svg");
+                    width: 24px;
+                    height: 24px;
+                    background-color: $primary;
+                }
+                &:hover {
+                    color: $--radio-hover-border !important;
+                }
+                i {
+                    // 控制半选的颜色
+                    height: 24px;
+                    color: $primary !important;
+                }
+                &:has(> .el-icon-star-on) {
+                    &::before {
+                        display: inline-block;
+                        content: "";
+                        mask-image: url("../assets/svg-icon/common_star.svg");
+                        width: 24px;
+                        height: 24px;
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}

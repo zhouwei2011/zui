@@ -1,0 +1,186 @@
+.zrx-multiple-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    border: 1px solid $border;
+    border-radius: 2px;
+    background-color: $white;
+    &.focus {
+        border-color: $primary;
+        box-shadow: 0 0 4px 2px $--nav-selected-bg;
+    }
+    &[disabled] {
+        cursor: not-allowed;
+        background-color: $background;
+        .tag,
+        .text {
+            color: $--text-disabled;
+            .btn {
+                opacity: 0.3;
+                pointer-events: none;
+            }
+        }
+        > .btn {
+            pointer-events: none;
+        }
+        .wrapper .tag:not(.tip) {
+            padding-right: 8px;
+        }
+    }
+    &:not([disabled]) {
+        .wrapper {
+            cursor: pointer;
+        }
+    }
+    &.filled[clearable] {
+        > .btn-clear {
+            display: none;
+        }
+        &:hover {
+            > .btn-toggle {
+                display: none;
+            }
+            > .btn-clear {
+                display: inline-block;
+            }
+        }
+    }
+    .wrapper {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: flex-start;
+        height: 100%;
+        overflow: hidden;
+        .tag {
+            height: 24px;
+            margin: 3px 0 0 2px;
+            padding: 0 8px;
+            border: 1px solid $border;
+            border-radius: 2px;
+            line-height: 22px;
+            user-select: none;
+            background-color: $background;
+            .btn {
+                position: absolute;
+                top: -1px;
+                right: 2px;
+            }
+            &:not(.tip) {
+                position: relative;
+                flex: 0 1 auto;
+                padding-right: 28px;
+                @include ellipsis;
+            }
+            &.tip {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+        }
+        .text {
+            width: 100%;
+            height: 100%;
+            padding: 0 0 0 8px;
+            line-height: 30px;
+            @include ellipsis;
+        }
+    }
+    .placeholder {
+        padding-left: 8px;
+        line-height: 30px;
+        color: $--placeholder;
+        pointer-events: none;
+        @include ellipsis;
+    }
+    > .btn {
+        &.btn-toggle {
+            margin-right: 4px;
+            .zrx-icon-down-angle {
+                background-color: $--text-dim;
+            }
+        }
+        &.btn-clear {
+            margin-right: 4px;
+        }
+    }
+}
+.zrx-multiple-select-dropper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    width: 100%;
+    min-width: 246px;
+    max-height: 246px;
+    padding: 4px;
+    border: 1px solid $border;
+    border-radius: 2px;
+    @include dropdown-shadow;
+    background-color: $white;
+    z-index: 2;
+    &[placement="internal"] {
+        &.y-placement-bottom {
+            top: 100%;
+        }
+        &.y-placement-top {
+            bottom: 100%;
+        }
+        &.x-placement-left {
+            right: 0;
+        }
+        &.x-placement-right {
+            left: 0;
+        }
+    }
+    &.y-placement-bottom {
+        margin-top: 4px;
+        transform-origin: 50% 0;
+    }
+    &.y-placement-top {
+        margin-bottom: 4px;
+        transform-origin: 50% 100%;
+    }
+    .search-bar {
+        flex: 0 0 auto;
+        background-color: $white;
+        .inner {
+            display: flex;
+            align-items: center;
+            padding: 0 4px 0 8px;
+            border: 1px solid $border-3;
+            border-radius: 2px;
+        }
+        input {
+            flex: 1 1 auto;
+            height: 30px;
+            padding: 0;
+            border: 0;
+            border-radius: 2px 0 0 2px;
+            line-height: 30px;
+        }
+        .btn {
+            flex: 0 0 auto;
+            line-height: 0;
+        }
+        & + .zrx-dropdown-menu {
+            margin-top: 4px;
+        }
+        & + .zrx-dropdown-empty,
+        & + .zrx-dropdown-loading {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+    .zrx-dropdown-menu {
+        flex: 1 1 auto;
+        margin-right: -4px;
+        padding-right: 4px;
+    }
+    .zrx-dropdown-empty,
+    .zrx-dropdown-loading {
+        padding: 0 4px;
+        line-height: 26px;
+        text-align: center;
+        color: $--upload-text;
+    }
+}

@@ -1,0 +1,653 @@
+/* element steps */
+.el-steps {
+    // 水平步骤条
+    &.el-steps--horizontal {
+        .el-step {
+            min-width: 280px;
+            position: relative;
+
+            .el-step__head {
+                .el-step__line {
+                    top: 15.5px;
+                    left: 116px;
+                    height: 1px;
+                    width: calc(100% - 128px);
+                    background-color: #e7e7eb;
+                }
+
+                .el-step__icon {
+                    width: 32px;
+                    height: 32px;
+                    border-width: 1px;
+                    border-color: #e7e7eb;
+
+                    .el-step__icon-inner {
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+
+                &.is-finish .el-step__icon.is-text,
+                &.is-success .el-step__icon.is-text {
+                    color: $primary;
+                    border-color: $primary;
+                }
+
+                &.is-process {
+                    .el-step__icon.is-text {
+                        border-color: $primary;
+                        background-color: $primary;
+
+                        .el-step__icon-inner {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.is-wait {
+                    .el-step__icon-inner {
+                        color: rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+
+            .el-step__main {
+                .el-step__title {
+                    position: absolute;
+                    left: 40px;
+                    top: 5px;
+                    line-height: 22px;
+                    color: rgba(0, 0, 0, 0.65);
+
+                    &.is-process {
+                        color: rgba(0, 0, 0, 0.85);
+                    }
+                }
+
+                .el-step__description {
+                    font-size: 14px;
+                    line-height: 22px;
+                    padding-left: 40px;
+                    padding-top: 4px;
+                    width: 152px;
+                    color: rgba(0, 0, 0, 0.65);
+                }
+            }
+        }
+
+        &[size="small"] {
+            .el-step {
+                min-width: 264px;
+
+                .el-step__head {
+                    .el-step__line {
+                        top: 11.5px;
+                        left: 96px;
+                        width: calc(100% - 104px);
+                    }
+
+                    .el-step__icon {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                .el-step__main {
+                    .el-step__title {
+                        left: 32px;
+                        top: 1px;
+                        font-size: 14px;
+                    }
+
+                    .el-step__description {
+                        padding-left: 32px;
+                        width: 152px;
+                    }
+                }
+            }
+        }
+    }
+
+    // 竖直方向步骤条
+    &.el-steps--vertical {
+        .el-step {
+            min-height: 101px;
+
+            .el-step__head {
+                width: 32px;
+
+                .el-step__line {
+                    width: 1px;
+                    left: 15.5px;
+                    top: 40px;
+                    height: calc(100% - 48px);
+                    background-color: #e7e7eb;
+                }
+
+                .el-step__icon {
+                    width: 32px;
+                    height: 32px;
+                    border-width: 1px;
+                    border-color: #e7e7eb;
+
+                    .el-step__icon-inner {
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+
+                &.is-finish .el-step__icon.is-text,
+                &.is-success .el-step__icon.is-text {
+                    color: $primary;
+                    border-color: $primary;
+                }
+
+                &.is-process {
+                    .el-step__icon.is-text {
+                        border-color: $primary;
+                        background-color: $primary;
+
+                        .el-step__icon-inner {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.is-wait {
+                    .el-step__icon-inner {
+                        color: rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+
+            .el-step__main {
+                padding-left: 8px;
+                padding-top: 5px;
+
+                .el-step__title {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: rgba(0, 0, 0, 0.65);
+
+                    &.is-process {
+                        color: rgba(0, 0, 0, 0.85);
+                    }
+                }
+
+                .el-step__description {
+                    font-size: 14px;
+                    line-height: 22px;
+                    padding-top: 4px;
+                    width: 152px;
+                    color: rgba(0, 0, 0, 0.65);
+                }
+            }
+        }
+
+        &[size="small"] {
+            .el-step {
+                min-height: 93px;
+
+                .el-step__head {
+                    width: 24px;
+
+                    .el-step__line {
+                        width: 1px;
+                        left: 11.5px;
+                        top: 32px;
+                        height: calc(100% - 40px);
+                        background-color: #e7e7eb;
+                    }
+
+                    .el-step__icon {
+                        width: 24px;
+                        height: 24px;
+                        border-width: 1px;
+                        border-color: #e7e7eb;
+
+                        .el-step__icon-inner {
+                            font-size: 14px;
+                            font-weight: normal;
+                        }
+                    }
+
+                    &.is-finish .el-step__icon.is-text,
+                    &.is-success .el-step__icon.is-text {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+
+                    &.is-process {
+                        .el-step__icon.is-text {
+                            border-color: $primary;
+                            background-color: $primary;
+
+                            .el-step__icon-inner {
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    &.is-wait {
+                        .el-step__icon-inner {
+                            color: rgba(0, 0, 0, 0.25);
+                        }
+                    }
+                }
+
+                .el-step__main {
+                    padding-left: 8px;
+                    padding-top: 1px;
+
+                    .el-step__title {
+                        font-size: 14px;
+                        line-height: 22px;
+                        color: rgba(0, 0, 0, 0.65);
+
+                        &.is-process {
+                            color: rgba(0, 0, 0, 0.85);
+                        }
+                    }
+
+                    .el-step__description {
+                        font-size: 14px;
+                        line-height: 22px;
+                        padding-top: 4px;
+                        width: 152px;
+                        color: rgba(0, 0, 0, 0.65);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* custom steps */
+.zrx-step__line {
+    position: absolute;
+    border-color: inherit;
+    background-color: #c0c4cc;
+    font-family: MicrosoftYaHei;
+}
+
+.zrx-step__icon {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: #fff;
+    transition: 0.15s ease-out;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: inherit;
+}
+.zrx-step__title {
+    font-size: 16px;
+    color: #3b4155;
+    letter-spacing: 0;
+    line-height: 24px;
+    font-weight: 400;
+}
+// 步骤条
+.zrx-steps {
+    display: flex;
+    // 水平步骤条
+    &.zrx-steps--horizontal {
+        white-space: nowrap;
+        .zrx-step {
+            min-width: 280px;
+            position: relative;
+            flex-shrink: 1;
+            .zrx-step__head {
+                position: relative;
+                width: 100%;
+                .zrx-step__line {
+                    top: 15.5px;
+                    left: 116px;
+                    height: 1px;
+                    width: calc(100% - 128px);
+                    background-color: #e7e7eb;
+                    right: 0;
+                    .zrx-step__line-inner {
+                        display: block;
+                        border-width: 1px 0 0 !important;
+                        border-style: solid;
+                        border-color: inherit;
+                        transition: 0.15s ease-out;
+                        box-sizing: border-box;
+                        width: 0;
+                        height: 0;
+                    }
+                }
+
+                .zrx-step__icon {
+                    width: 32px;
+                    height: 32px;
+                    border-width: 1px;
+                    border-color: #e7e7eb;
+
+                    .zrx-step__icon-inner {
+                        font-size: 14px;
+                        font-weight: normal;
+                        color: inherit;
+                        line-height: 1;
+                        text-align: center;
+                        user-select: none;
+
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        text-align: center;
+                        font-weight: 700;
+                        line-height: 1;
+                        color: inherit;
+                    }
+                }
+                &.is-finish,
+                &.is-success {
+                    color: $primary;
+                    border-color: $primary;
+                    .is-text {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                }
+
+                &.is-process {
+                    .zrx-step__main {
+                        white-space: normal;
+                        text-align: left;
+                    }
+                    .zrx-step__icon.is-text {
+                        border-color: $primary;
+                        background-color: $primary;
+
+                        .zrx-step__icon-inner {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.is-wait {
+                    color: #c0c4cc;
+                    border-color: #c0c4cc;
+                    .zrx-step__line {
+                        display: none;
+                    }
+                    .zrx-step__icon-inner {
+                        color: rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+
+            .zrx-step__main {
+                white-space: normal;
+                text-align: left;
+                .zrx-step__title {
+                    position: absolute;
+                    left: 40px;
+                    top: 5px;
+                    line-height: 22px;
+
+                    // &.is-process {
+                    //     color: rgba(0, 0, 0, 0.85);
+                    //     font-weight: 700;
+                    // }
+                }
+
+                .zrx-step__description {
+                    font-size: 14px;
+                    line-height: 22px;
+                    padding-left: 40px;
+                    padding-top: 4px;
+                    width: 152px;
+                    color: rgba(59, 65, 85, 0.7);
+                    font-family: MicrosoftYaHei;
+                }
+            }
+        }
+
+        &[size="small"] {
+            .zrx-step {
+                min-width: 264px;
+
+                .zrx-step__head {
+                    .zrx-step__line {
+                        top: 11.5px;
+                        left: 96px;
+                        width: calc(100% - 104px);
+                    }
+
+                    .zrx-step__icon {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                .zrx-step__main {
+                    white-space: normal;
+                    text-align: left;
+                    .zrx-step__title {
+                        left: 32px;
+                        top: 1px;
+                        font-size: 16px;
+                    }
+
+                    .zrx-step__description {
+                        padding-left: 32px;
+                        width: 152px;
+                    }
+                }
+            }
+        }
+    }
+
+    // 竖直方向步骤条
+    &.zrx-steps--vertical {
+        flex-flow: column;
+        height: 100%;
+        .zrx-step {
+            min-height: 101px;
+            position: relative;
+            .zrx-step__head {
+                width: 32px;
+                position: relative;
+                .zrx-step__line {
+                    width: 1px;
+                    left: 15.5px;
+                    top: 40px;
+                    height: calc(100% - 48px);
+                    background-color: #e7e7eb;
+                    bottom: 0;
+                    .zrx-step__line-inner {
+                        display: block;
+                        border-width: 0 0 0 1px !important;
+                        border-style: solid;
+                        border-color: inherit;
+                        transition: 0.15s ease-out;
+                        box-sizing: border-box;
+                        width: 0;
+                        height: 0;
+                    }
+                }
+
+                .zrx-step__icon {
+                    width: 32px;
+                    height: 32px;
+                    border-width: 1px;
+                    border-color: #e7e7eb;
+
+                    .zrx-step__icon-inner {
+                        font-size: 14px;
+                        font-weight: normal;
+                        color: inherit;
+                        line-height: 1;
+                        text-align: center;
+                        user-select: none;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        text-align: center;
+                        font-weight: 700;
+                        line-height: 1;
+                        color: inherit;
+                    }
+                }
+
+                &.is-finish,
+                &.is-success {
+                    color: $primary;
+                    border-color: $primary;
+                    border-width: 0 0 0 2px !important;
+                    .zrx-step__line {
+                        background-color: #e7e7eb;
+                    }
+                    .is-text {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                }
+                &.is-process {
+                    .zrx-step__main {
+                        white-space: normal;
+                        text-align: left;
+                    }
+
+                    .zrx-step__icon.is-text {
+                        border-color: $primary;
+                        background-color: $primary;
+
+                        .zrx-step__icon-inner {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.is-wait {
+                    color: #c0c4cc;
+                    border-color: #c0c4cc;
+                    .zrx-step__line {
+                        display: none;
+                    }
+                    .zrx-step__icon-inner {
+                        color: rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+
+            .zrx-step__main {
+                padding-left: 8px;
+                padding-top: 5px;
+                flex-grow: 1;
+                white-space: normal;
+                text-align: left;
+                .zrx-step__title {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+
+                .zrx-step__description {
+                    font-size: 14px;
+                    line-height: 22px;
+                    padding-top: 4px;
+                    width: 152px;
+                    color: rgba(59, 65, 85, 0.7);
+                    font-family: MicrosoftYaHei;
+                }
+            }
+        }
+        .is-vertical {
+            display: flex;
+        }
+        &[size="small"] {
+            .zrx-step {
+                min-height: 93px;
+
+                .zrx-step__head {
+                    width: 24px;
+
+                    .zrx-step__line {
+                        width: 1px;
+                        left: 11.5px;
+                        top: 32px;
+                        height: calc(100% - 40px);
+                        background-color: #e7e7eb;
+                    }
+
+                    .zrx-step__icon {
+                        width: 24px;
+                        height: 24px;
+                        border-width: 1px;
+                        border-color: #e7e7eb;
+
+                        .zrx-step__icon-inner {
+                            font-size: 14px;
+                            font-weight: normal;
+                        }
+                    }
+
+                    &.is-finish,
+                    &.is-success {
+                        color: $primary;
+                        border-color: $primary;
+                        border-width: 0 0 0 2px !important;
+                        .zrx-step__line {
+                            background-color: #e7e7eb;
+                        }
+                        .is-text {
+                            color: $primary;
+                            border-color: $primary;
+                        }
+                    }
+                    &.is-process {
+                        .zrx-step__icon.is-text {
+                            border-color: $primary;
+                            background-color: $primary;
+
+                            .zrx-step__icon-inner {
+                                color: #fff;
+                            }
+                        }
+                    }
+
+                    &.is-wait {
+                        .zrx-step__icon-inner {
+                            color: rgba(0, 0, 0, 0.25);
+                        }
+                    }
+                }
+
+                .zrx-step__main {
+                    padding-left: 8px;
+                    padding-top: 1px;
+
+                    .zrx-step__title {
+                        font-size: 16px;
+                        line-height: 22px;
+                        color: rgba(0, 0, 0, 0.65);
+
+                        &.is-process {
+                            color: rgba(0, 0, 0, 0.85);
+                        }
+                    }
+
+                    .zrx-step__description {
+                        font-size: 14px;
+                        line-height: 22px;
+                        padding-top: 4px;
+                        width: 152px;
+                        color: rgba(59, 65, 85, 0.7);
+                        font-family: MicrosoftYaHei;
+                    }
+                }
+            }
+        }
+    }
+}

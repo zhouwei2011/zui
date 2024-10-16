@@ -1,0 +1,127 @@
+// 分页样式
+.el-pagination {
+    @mixin  itemStyle() {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 30px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        border: solid 1px #e7e7eb;
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    @mixin itemSmallStyle() {
+        width: 22px;
+        height: 22px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 22px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    // 有背景边框的分页器
+    &.is-background {
+        color: rgba(0, 0, 0, 0.65);
+
+        .btn-prev, .btn-next {
+            @include itemStyle();
+
+            &[disabled='disabled'] {
+                color: rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .el-pager {
+            li {
+                @include itemStyle();
+                margin: 0 4px;
+                width: auto;
+                padding: 0 11px;
+
+                &:not(.disabled).active {
+                    color: #fff;
+                    background-color: $primary;
+                }
+
+                &:not(.disabled):not(.active):hover {
+                    color: $primary;
+                }
+
+                &[disabled='disabled'] {
+                    color: rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+    }
+
+    // 小型分页器
+    &.el-pagination--small {
+        padding: 0;
+        height: 26px;
+        line-height: 26px;
+
+        .btn-prev, .btn-next {
+            vertical-align: middle;
+            @include itemSmallStyle();
+
+            &[disabled='disabled'] {
+                color: rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .el-pager {
+            vertical-align: middle;
+
+            li {
+                @include itemSmallStyle();
+                margin: 0 2px;
+                width: auto;
+                padding: 0 6px;
+
+                &:not(.disabled).active {
+                    color: #fff;
+                    background-color: $primary;
+                }
+
+                &:not(.disabled):not(.active):hover {
+                    color: $primary;
+                }
+
+                &[disabled='disabled'] {
+                    color: rgba(0, 0, 0, 0.25);
+                }
+            }
+        }
+
+        .el-pagination__sizes {
+            height: 26px;
+            line-height: 26px;
+            vertical-align: middle;
+
+            .el-select.el-select--mini {
+                .el-input__inner {
+                    height: 26px;
+                    line-height: 24px;
+                }
+
+                .el-input__suffix {
+                    .el-input__suffix-inner .el-select__caret.el-input__icon {
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+
+        .el-pagination__jump {
+            height: 26px;
+            line-height: 26px;
+            vertical-align: middle;
+        }
+    }
+}

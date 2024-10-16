@@ -1,0 +1,183 @@
+$--pro-bar-gray: #b8bed5;
+$--pro-bar-gray-hov: #c6cbdd;
+$--pro-bar-light: $primary; //#405ffe; //#ffa433; // #405ffe; $primary
+$--pro-bar-light-hov: $--btn-primary-bg-hover; // #667ffe; // #ffb65b; // #667ffe;
+$--pro-text: rgba(var(--nav-text), 0.7);
+.zrx-bar-chart {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 6px 0;
+    z-index: 1;
+    .zrx-bar-chart-content {
+        // border: 1px solid red;
+        overflow-y: auto;
+        position: relative;
+        width: 100%;
+        height: calc(100% - 20px);
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background-color: transparent;
+        }
+
+        .zrx-bar-chart-scroll-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .zrx-bar-chart__item {
+            cursor: pointer;
+            .zrx-bar-chart__left {
+                display: flex;
+                height: 20px;
+                line-height: 20px;
+
+                .zrx-bar-chart__title {
+                    flex: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 12px;
+                    color: $--pro-text;
+                    white-space: nowrap;
+                    margin-right: 4px;
+                    margin-top: 2px;
+                    line-height: 20px;
+                }
+            }
+            &:hover {
+                .zrx-bar-chart__right {
+                    .zrx-bar-chart__bar {
+                        &::after {
+                            display: block;
+                        }
+                    }
+                    .zrx-bar-chart__value {
+                        display: block;
+                    }
+                }
+            }
+            .zrx-bar-chart__right {
+                margin-top: 6px;
+                .zrx-bar-chart__bar {
+                    background: $--pro-bar-gray;
+                    border-radius: 0 2px 2px 0;
+                    height: 12px;
+                    position: relative;
+                    &::after {
+                        display: none;
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: rgba(225,225,225, 0.4);
+                    }
+                    &.light {
+                        background: $--pro-bar-light;
+                    }
+                }
+                .zrx-bar-chart__value {
+                    // display: none;
+                    position: absolute;
+                    bottom: 16px;
+                    right: 0;
+                    transform: translate(50%, 0);
+                    height: 22px;
+                    line-height: 22px;
+                    background: #ffffff;
+                    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+                    border-radius: 2px;
+                    font-size: 12px;
+                    padding: 0 4px;
+                }
+            }
+        }
+    }
+
+    .zrx-bar-chart-axis {
+        pointer-events: none;
+        position: absolute;
+        top: 6px;
+        left: 0;
+        right: 0;
+        bottom: 6px + 20px;
+        display: flex;
+        z-index: -1;
+        justify-content: space-between;
+        .zrx-bar-chart__item {
+            width: 1px;
+            border-right: 1px dashed #dcdfe8;
+            position: relative;
+            &:first-child {
+                border-right: 0;
+            }
+            .zrx-bar-chart__bottom {
+                font-size: 12px;
+                color: $--pro-text;
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    .zrx-bar-chart-value-box {
+        position: absolute;
+        height: 22px;
+        line-height: 22px;
+        background: #ffffff;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 2px;
+        font-size: 12px;
+        padding: 0 4px;
+        z-index: 2;
+    }
+    &.zrx-bar-chart-horizontal {
+        .zrx-bar-chart-content {
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 90px;
+                bottom: 0;
+                border-right: 1px solid #eaebf2;
+            }
+            .zrx-bar-chart__item {
+                display: flex;
+                align-items: center;
+                .zrx-bar-chart__left {
+                    width: 80px;
+                    height: auto;
+                    margin-right: 10px;
+                    text-align: right;
+                    .zrx-bar-chart__title {
+                        margin: 0;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        text-overflow: ellipsis;
+                        -webkit-line-clamp: 2; /* 要显示的行数 */
+                        -webkit-box-orient: vertical;
+                        white-space: normal;
+                        line-height: 16px;
+                    }
+                }
+                .zrx-bar-chart__right {
+                    flex: 1;
+                    margin: 0;
+                    z-index: 1;
+                }
+            }
+        }
+        .zrx-bar-chart-axis {
+            left: 90px;
+        }
+        .zrx-bar-chart-value-box {
+            transform: translate(-50%, -20px);
+        }
+    }
+}

@@ -1,0 +1,26 @@
+// 空态图
+.zrx-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    &:not(.no-margin) {
+        &::before,
+        &::after {
+            content: "";
+            flex: 1 1 auto;
+            height: 24px;
+        }
+    }
+    > i {
+        flex: 0 0 auto;
+    }
+    > span {
+        flex: 0 0 auto;
+        margin-top: 8px;
+        line-height: 21px;
+        @include ellipsis;
+        color: $--placeholder;
+    }
+}

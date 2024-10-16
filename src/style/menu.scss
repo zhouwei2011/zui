@@ -1,0 +1,175 @@
+// 侧边导航样式
+.el-menu {
+    $menuIconMarginRight: 12px;
+    @mixin itemStyle($height) {
+        height: $height;
+        line-height: $height;
+        padding: 0 $--menu-padding 0 $--menu-padding !important;
+        background-color: $--menu-bg;
+        color: $--menu-text;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    @mixin leftIconStyle {
+        @include flex-center;
+        margin-right: $menuIconMarginRight;
+        width: $--menu-icon-size;
+        height: $--menu-item-height;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: $--menu-icon-size auto;
+    }
+
+    @mixin menuName {
+        @include ellipsis;
+        flex: 1;
+        font-size: 18px;
+        line-height: 22px;
+        transition: border-color 0.3s, color 0.3s;
+    }
+
+    width: $--menu-width;
+    border-right: 0;
+    box-sizing: border-box;
+
+    // 一级项
+    .el-menu-item {
+        @include itemStyle($--menu-item-height);
+
+        &.is-active {
+            color: $--menu-text-active;
+            background: $--menu-active !important;
+        }
+
+        &:hover:not(.is-active) {
+            color: $--menu-text-active !important;
+            background: $--menu-hover !important;
+        }
+
+        span {
+            @include menuName;
+            max-width: calc(100% - $menuIconMarginRight);
+        }
+
+        .menu-left-icon {
+            @include leftIconStyle;
+
+            i.zrx-icon {
+                font-size: $--menu-icon-size;
+                color: $--menu-text;
+            }
+        }
+    }
+
+    .el-submenu {
+        &.is-opened > .el-submenu__title .el-submenu__icon-arrow {
+            transform: rotateZ(90deg);
+        }
+
+        &.is-active {
+            > .el-submenu__title {
+                color: $--menu-text-active !important;
+            }
+        }
+
+        // 有子项的一级项
+        .el-submenu__title {
+            @include itemStyle($--menu-item-height);
+
+            &:hover:not(.is-active) {
+                color: $--menu-text-active !important;
+                background: $--menu-hover !important;
+
+                i.zrx-icon,
+                .el-submenu__icon-arrow.el-icon-arrow-down {
+                    color: $--menu-text-active !important;
+                }
+            }
+
+            span {
+                @include menuName;
+                max-width: calc(100% - $menuIconMarginRight);
+            }
+
+            > .menu-left-icon {
+                @include leftIconStyle;
+
+                i.zrx-icon {
+                    font-size: $--menu-icon-size;
+                    color: $--menu-text;
+                }
+            }
+
+            .el-submenu__icon-arrow.el-icon-arrow-down {
+                font-size: 16px;
+                color: $--menu-text;
+                font-family: 'icomoon' !important;
+                font-style: normal;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+
+                &:before {
+                    content: '\e65e' !important;
+                }
+            }
+        }
+
+        // 二级子项
+        .el-menu-item {
+            @include itemStyle($--small-menu-item-height);
+            padding: 0 $--menu-padding 0 ($--menu-icon-size + $menuIconMarginRight + $--menu-padding) !important;
+
+            span {
+                font-size: 16px;
+                max-width: 100%;
+            }
+        }
+    }
+
+    // 折叠
+    &.el-menu--collapse {
+        width: $--menu-collaspe-width;
+
+        .el-menu-item,
+        .el-submenu__title {
+            padding: 0 !important;
+            justify-content: center;
+
+            .el-tooltip {
+                padding: 0 !important;
+                display: flex !important;
+                @include flex-center;
+            }
+
+            .menu-left-icon {
+                @include leftIconStyle;
+                margin-right: 0;
+            }
+
+            span {
+                flex: 0;
+            }
+        }
+
+        .menu-left-icon {
+            @include leftIconStyle;
+            margin-right: 0;
+        }
+    }
+
+    &.el-menu--popup .el-menu-item {
+        @include itemStyle($--small-menu-item-height);
+        padding: 0 $--menu-icon-size !important;
+
+        &.is-active {
+            color: $--menu-text-active;
+        }
+
+        span {
+            font-size: 16px;
+            max-width: 100%;
+        }
+    }
+}

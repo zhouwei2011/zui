@@ -1,0 +1,322 @@
+// 上传组件样式
+@mixin uploadIcon($url) {
+    width: $--upload-icon-width;
+    height: $--upload-icon-height;
+    // @include transform-center;
+    // @include bgImage($url);
+    background-size: $--upload-icon-width $--upload-icon-height;
+}
+.zrx-upload {
+    &.disabled {
+        .zrx-image-preview,
+        .zrx-file-preview,
+        .el-button,
+        .files-preview .btn,
+        .el-upload-dragger,
+        .zrx-upload-icon-box {
+            // cursor: not-allowed;
+        }
+        .el-button,
+        .files-preview .btn,
+        .el-upload-dragger,
+        .zrx-upload-icon-box {
+            cursor: not-allowed;
+        }
+        .zrx-upload-icon-box,
+        .zrx-drag-upload .el-upload .el-upload-dragger {
+            &:hover {
+                border-color: $--upload-border-color;
+            }
+        }
+    }
+}
+// 文件和图片上传公共样式
+.zrx-upload-image,
+.zrx-upload-file {
+    position: relative;
+    pointer-events: none;
+
+    .el-upload--picture-card,
+    .el-upload--text {
+        width: auto;
+        height: auto;
+        display: inline-grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fill, $--upload-width);
+        grid-gap: $--upload-row-gap $--upload-column-gap;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        background-color: transparent;
+    }
+
+    .zrx-upload-icon-box {
+        width: $--upload-width;
+        height: $--upload-height;
+        position: relative;
+        border: 1px dashed $--upload-border-color;
+        background: $--upload-background;
+        border-radius: 2px;
+        pointer-events: auto;
+        .svg-icon {
+            position: absolute;
+            left: 50%;
+            top: 24px;
+            transform: translate(-50%, 0);
+            @include uploadIcon("../assets/svg-icon/icon_upload_image.svg");
+        }
+        .click-upload {
+            margin: 6px 46px;
+            width: 48px;
+            height: 16px;
+            color: $--upload-text;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 400;
+        }
+        &:hover {
+            border: 1px dashed $--btn-primary-bg-hover;
+        }
+    }
+
+    .zrx-image-preview,
+    .zrx-file-preview {
+        width: $--upload-width;
+        height: $--upload-height;
+        border-radius: 2px;
+        pointer-events: auto;
+        position: relative;
+        &:hover {
+            .shade {
+                display: flex;
+            }
+            .svg-icon-reload-container {
+                opacity: 1;
+            }
+        }
+        .shade {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: getColorVar(--black, 0.3);
+            z-index: 101;
+            .btn {
+                line-height: 0;
+                &:hover {
+                    .svg-icon {
+                        background-color: $white;
+                    }
+                }
+                .svg-icon {
+                    background-color: $white-2;
+                }
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .svg-icon-reload-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 108px;
+            height: 32px;
+            background-color: getColorVar(--black, 0.4);
+            border-radius: 1px;
+            opacity: 0;
+            &::before {
+                content: "";
+                position: absolute;
+                left: 4px;
+                top: 4px;
+                width: 24px;
+                height: 24px;
+                @include bgImage("../assets/svg-icon/reflash_sm.svg");
+            }
+            .reload-tip {
+                position: absolute;
+                top: 8px;
+                left: 28px;
+                height: 16px;
+                line-height: 16px;
+                color: $white;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+// 图片上传
+.zrx-upload-image {
+    .zrx-upload-icon-box .zrx-upload-icon {
+        @include uploadIcon("../assets/svg-icon/icon_upload_image.svg");
+    }
+
+    .zrx-image-preview {
+        .el-image {
+            width: $--upload-width;
+            height: $--upload-height;
+            border-radius: inherit;
+        }
+    }
+}
+
+// 文件上传
+.zrx-upload-file {
+    .zrx-upload-icon-box .zrx-upload-icon {
+        @include uploadIcon("../assets/svg-icon/icon_upload_file.svg");
+    }
+
+    .zrx-file-preview {
+        background: $--upload-file-preview-background;
+        border: solid 1px $--upload-border-color;
+        @include flex-center;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-shrink: 0;
+
+        i.zrx-file-icon {
+            margin-top: 24px;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            background-image: url("../assets/svg-icon/file_nor.svg");
+
+            &::before {
+                content: none;
+            }
+        }
+
+        .zrx-file-name {
+            // position: absolute;
+            width: calc($--upload-width - 24px);
+            margin-top: 4px;
+            color: rgba(57, 65, 86, 0.7);
+            font-size: 12px;
+            height: 32px;
+            line-height: 16px;
+            z-index: 100;
+            word-break: break-all;
+            @include ellipsisL(2);
+        }
+
+        i.zrx-remove-icon {
+            @include uploadIcon("../assets/svg-icon/common_delete.svg");
+            width: $--upload-width;
+            height: $--upload-height;
+            background-color: $black-5;
+            opacity: 0;
+        }
+
+        &:hover i.zrx-remove-icon {
+            opacity: 1;
+        }
+    }
+}
+
+.zrx-button-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    pointer-events: none;
+    .el-upload {
+        &.el-upload--text {
+            text-align: left;
+        }
+    }
+    .el-button {
+        pointer-events: auto;
+    }
+    .upload-tip {
+        order: 1;
+        width: 100%;
+        margin-top: 6px;
+        word-break: break-all;
+        font-size: 12px;
+        color: getColorVar(--font, 0.7);
+    }
+}
+
+.zrx-drag-upload {
+    .el-upload {
+        width: 100%;
+        .el-upload-dragger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: $--upload-height;
+            border: 1px dashed $--upload-border-color;
+            background: $--upload-background;
+            border-radius: 2px;
+            position: relative;
+            padding: 18px 0 12px;
+            &:hover {
+                border: 1px dashed $--btn-primary-bg-hover;
+            }
+            .svg-icon {
+                margin: 0 auto;
+                @include uploadIcon("../assets/svg-icon/icon_upload_file.svg");
+            }
+            .click-upload {
+                margin: 4px 0;
+                width: 48px;
+                height: 16px;
+                color: $--upload-text;
+                font-size: 12px;
+                text-align: center;
+                font-weight: 400;
+                width: 100%;
+                color: getColorVar(--font, 0.7);
+            }
+            .upload-tip {
+                width: 100%;
+                word-break: break-all;
+                font-size: 12px;
+                color: getColorVar(--font, 0.7);
+            }
+        }
+    }
+}
+.files-preview {
+    width: 100%;
+    order: 2;
+    margin-top: 12px;
+    li {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        height: 28px;
+        > .icon,
+        > .btn {
+            flex: 0 0 auto;
+        }
+        span {
+            flex: 1 1 auto;
+            @include ellipsis;
+            margin: 0 8px 0 2px;
+            line-height: 20px;
+            font-size: 12px;
+            color: $--text-light;
+        }
+        &:not(:last-of-type) {
+            margin-bottom: 4px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: calc(100% - 24px);
+            background-color: $--table-tr-border-color;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}

@@ -1,0 +1,339 @@
+@use 'sass:math';
+
+@function getColorVar($var, $opacity: 1) {
+    @return rgba(var($var), $opacity);
+}
+
+@function vwl($val) {
+    @return math.div($val, 1920) * 100vw;
+}
+
+@function vw($val) {
+    @return math.div($val, 1440) * 100vw;
+}
+
+@function vhl($val) {
+    @return math.div($val, 1080) * 100vh;
+}
+
+@function vh($val) {
+    @return math.div($val, 900) * 100vh;
+}
+
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin ellipsisL($lines) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin inline-flex-center {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin no-scrollbar {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@mixin boldFont {
+    font-family: "Microsoft YaHei Bold";
+}
+
+@mixin empty($text: "--") {
+    &:empty::before {
+        content: $text;
+    }
+}
+
+@mixin scrollbar($thumb: $--default-scroll-color, $ac-thumb: $--click-scroll-color, $track: $--scroll-track-color) {
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        &:hover {
+            background-color: $track;
+        }
+    }
+    // 滚动条滑块
+    &::-webkit-scrollbar-thumb {
+        border: 4px solid transparent;
+        border-radius: 100px;
+        background-color: $thumb;
+        background-clip: padding-box;
+        &:hover {
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        &:active {
+            background-color: $ac-thumb;
+        }
+    }
+}
+
+@mixin placeholder($color) {
+    ::placeholder {
+        color: $color;
+    }
+}
+
+@mixin base-shadow {
+    box-shadow: 0px 0px 4px 0px getColorVar(--shadow);
+}
+
+@mixin dialog-shadow {
+    box-shadow: 0px 9px 28px 8px getColorVar(--shadow, 0.05), 0px 6px 16px 0px getColorVar(--shadow, 0.08),
+        0px 3px 6px -4px getColorVar(--shadow, 0.12);
+}
+
+@mixin dropdown-shadow {
+    box-shadow: 0 1px 2px -4px getColorVar(--font, 0.08), 0 6px 12px 2px getColorVar(--font, 0.05),
+        0 12px 24px 4px getColorVar(--font, 0.02);
+}
+
+@mixin bgImage($url) {
+    background-image: url($url);
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@mixin transform-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin message-shadow {
+    box-shadow: 0px 0px 16px 0px getColorVar(--shadow, 0.2), 0px 16px 32px 0px getColorVar(--shadow, 0.12),
+        0px 3px 6px -4px getColorVar(--shadow, 0.12);
+}
+@mixin tree-select-shadow {
+    box-shadow: 0 0 4px 2px rgba(66, 99, 254, 0.1);
+}
+
+// 主题色
+$primary: getColorVar(--primary) !default;
+$primary-1: getColorVar(--primary-1) !default;
+$primary-2: getColorVar(--primary-2) !default;
+$primary-3: getColorVar(--primary-3) !default;
+$primary-4: getColorVar(--primary-4) !default;
+$warning: getColorVar(--warning) !default;
+$warning-2: getColorVar(--warning-2) !default;
+$warning-3: getColorVar(--warning-3) !default;
+$warning-4: getColorVar(--warning-4) !default;
+$success: getColorVar(--success) !default;
+$success-2: getColorVar(--success-2) !default;
+$success-3: getColorVar(--success-3) !default;
+$success-4: getColorVar(--success-4) !default;
+$error: getColorVar(--error) !default;
+$error-2: getColorVar(--error-2) !default;
+$error-3: getColorVar(--error-3) !default;
+$error-4: getColorVar(--error-4) !default;
+$error-5: getColorVar(--error-5) !default;
+$black: getColorVar(--black) !default;
+$black-2: getColorVar(--black, 0.85) !default;
+$black-3: getColorVar(--black, 0.65) !default;
+$black-4: getColorVar(--black, 0.45) !default;
+$black-5: getColorVar(--black, 0.25) !default;
+$font: getColorVar(--font) !default;
+$font-2: getColorVar(--font, 0.9) !default;
+$font-3: getColorVar(--font, 0.7) !default;
+$shadow: getColorVar(--shdow) !default;
+$disabled: getColorVar(--disabled) !default;
+$background: getColorVar(--background) !default;
+$white: getColorVar(--white) !default;
+$white-2: getColorVar(--white, 0.65) !default;
+$border: getColorVar(--border) !default;
+$border-2: getColorVar(--border-2) !default;
+$border-3: getColorVar(--border-3) !default; //#DCDFE8
+$gray-1: getColorVar(--gray-1) !default; // #f4f5f8
+$gray-2: getColorVar(--gray-2) !default; // #E8EAF0
+$date-current: getColorVar(--date-current) !default;
+
+$black: getColorVar(--black) !default;
+// 文字提示的背景色
+$--tooltip-dark: getColorVar(--tooltip-dark);
+$--tooltip-dark-text-color: getColorVar(--tooltip-dark-text-color);
+// 左侧导航背景颜色
+$--left-side-bg: getColorVar(--left-side-bg) !default;
+// 顶部背景颜色
+$--top-bar-bg: getColorVar(--top-bar) !default;
+// 侧边导航相关颜色变量
+$--menu-bg: getColorVar(--menu-bg) !default;
+$--menu-active: getColorVar(--menu-active) !default;
+$--menu-hover: getColorVar(--menu-hover) !default;
+$--menu-text: getColorVar(--menu-text, 0.65) !default;
+$--menu-text-active: getColorVar(--menu-text-active) !default;
+// 按钮变量
+$--btn-padding: var(--btn-padding, 4px) !default;
+$--btn-size-small: var(--btn-size-small, 24px) !default;
+$--btn-size-normal: var(--btn-size-small, 32px) !default;
+$--btn-border-color: getColorVar(--table-tr-border-color, 1) !default; //#dcdfe8
+// 主要按钮
+$--btn-primary-bg: $primary !default;
+$--btn-primary-bg-hover: getColorVar(--radio-hover-border, 1) !default;
+$--btn-primary-bg-focus: getColorVar(--primary-focus, 1) !default;
+// 次要按钮
+$--btn-default-bg: var(--btn-default-bg, $white) !default;
+$--btn-default-bg-hover: getColorVar(--background, 1) !default;
+$--btn-default-bg-focus: getColorVar(--radio-hover-inner-unchecked, 1) !default;
+// 幽灵按钮
+$--btn-ghost-bg-hover: getColorVar(--background, 1) !default;
+$--btn-ghost-bg-focus: getColorVar(--radio-hover-inner-unchecked, 1) !default;
+// 文字按钮
+$--btn-text-color: $primary !default;
+// 失效按钮
+$--btn-disabled-bg: getColorVar(--button-disabled-content, 1) !default;
+$--btn-disabled-bg-hover: getColorVar(--button-disabled-content, 1) !default;
+// 开关
+$--switch-height: var(--switch-height, 24px) !default;
+$--switch-width: var(--switch-width, 48px) !default;
+$--switch-border: getColorVar(--border-3, 1) !default;
+$--switch-bg: $--switch-border !default;
+$--switch-bg-hover: getColorVar(--radio-hover-inner-unchecked, 1) !default;
+$--switch-bg-disabled: getColorVar(--primary-1, 1) !default;
+$--switch-disabled-border: getColorVar(--tag-blue-border-color, 1) !default;
+$--switch-bg-checked: $primary !default;
+$--switch-bg-checked-hover: getColorVar(--radio-hover-border, 1) !default;
+// 字体颜色
+$--text-color: $font !default;
+$--text-light: $font-2 !default; // 0.9
+$--text-dim: $font-3 !default; // 0.7
+$--text-color-disabled: $black-5 !default;
+$--text-disabled: getColorVar(--font, 0.3) !default;
+
+//列表相关颜色
+$--table-header-color: getColorVar(--table-header-color) !default; //列表标题背景色
+$--table-tr-hover-color: getColorVar(--table-tr-hover-color, 0.04) !default; //列表内容行hover颜色
+$--table-tr-selected-color: getColorVar(--table-tr-selected-color, 0.1) !default; //列表内容行选择颜色
+$--table-text-color: getColorVar(--nav-hover-bg) !default; //列表字体颜色
+$--table-scroll-color: getColorVar(--table-scroll-color) !default; //列表滚动条颜色
+$--table-tr-border-color: getColorVar(--table-tr-border-color) !default; //列表内容行底部border颜色
+
+//tag标签相关颜色
+$--tag-default-border-color: getColorVar(--tag-default-border-color) !default; //tag标签默认border颜色
+$--tag-default-background-color: getColorVar(--tag-default-background-color) !default; //tag标签默认background颜色
+$--tag-default-color: getColorVar(--tag-default-color) !default; //tag标签默认color颜色
+$--tag-default-icon-close-color: getColorVar(--tag-default-icon-close-color) !default; //tag标签默认关闭按钮颜色
+$--tag-default-icon-close-hover-color: getColorVar(
+    --tag-default-icon-close-hover-color
+) !default; //tag标签默认关闭按钮hover颜色
+$--tag-white-background-color: getColorVar(--tag-white-background-color) !default; //tag标签white background颜色
+$--tag-grey-background-color: getColorVar(--tag-grey-background-color) !default; //tag标签grey background颜色
+$--tag-blue-border-color: getColorVar(--tag-blue-border-color) !default; //tag标签blue border颜色
+$--tag-blue-background-color: getColorVar(--tag-blue-background-color) !default; //tag标签blue background颜色
+$--tag-blue-color: getColorVar(--tag-blue-color) !default; //tag标签blue color颜色
+$--tag-green-border-color: getColorVar(--tag-green-border-color) !default; //tag标签green border颜色
+$--tag-green-background-color: getColorVar(--tag-green-background-color) !default; //tag标签green background颜色
+$--tag-green-color: getColorVar(--tag-green-color) !default; //tag标签green color颜色
+$--tag-orange-border-color: getColorVar(--tag-orange-border-color) !default; //tag标签orange border颜色
+$--tag-orange-background-color: getColorVar(--tag-orange-background-color) !default; //tag标签orange background颜色
+$--tag-orange-color: getColorVar(--tag-orange-color) !default; //tag标签orange color颜色
+$--tag-red-border-color: getColorVar(--tag-red-border-color) !default; //tag标签red border颜色
+$--tag-red-background-color: getColorVar(--tag-red-background-color) !default; //tag标签red background颜色
+$--tag-red-color: getColorVar(--tag-red-color) !default; //tag标签red color颜色
+//tooltip样式相关颜色
+$--tooltip-background-color: getColorVar(--tooltip-background-color) !default; //tooltip background颜色
+$--tooltip-shadow-color-1: getColorVar(--tooltip-shadow-color, 0.2) !default; //tooltip shadow颜色1
+$--tooltip-shadow-color-2: getColorVar(--tooltip-shadow-color, 0.12) !default; //tooltip shadow颜色2
+
+// 顶部工具条高度
+$--top-bar-height: var(--top-bar-height, 56px) !default;
+// 页面左右内边距
+$--page-padding: var(--page-padding, 24px) !default;
+$--app-name-text: getColorVar(--app-name-text) !default;
+// 导航宽度
+$--menu-width: var(--menu-width, 240px) !default;
+// 折叠后宽度
+$--menu-collaspe-width: var(--menu-collaspe-width, 56px) !default;
+// 一级导航子项高度
+$--menu-item-height: var(--menu-item-height, 60px) !default;
+// 非一级子项高度
+$--small-menu-item-height: var(--small-menu-item-height, 50px) !default;
+// 导航左右padding
+$--menu-padding: var(--menu-padding, 32px) !default;
+// 导航icon大小
+$--menu-icon-size: var(--menu-icon-size, 28px) !default;
+$--left-side-padding-bottom: var(--left-side-padding-bottom, 72px) !default;
+
+// 对话框高度
+$--dialog-padding: var(--dialog-padding, 0 16px) !default;
+$--dialog-header-height: var(--dialog-header-height, 40px) !default;
+$--dialog-footer-height: var(--dialog-footer-height, 56px) !default;
+$--dialog-footer-bg: var(--dialog-footer-bg, $background) !default;
+// 选中/悬浮效果
+$--hover-primary: getColorVar(--hover, 0.04);
+$--selected-primary: getColorVar(--selected, 0.1);
+// 通用
+$--placeholder: getColorVar(--font, 0.3);
+$--mask: getColorVar(--mask, 0.3);
+// 主导航
+$--nav-bg: getColorVar(--nav-bg, 0) !default;
+$--nav-bg-dropped: getColorVar(--nav-bg-dropped, 0) !default;
+$--nav-text: getColorVar(--nav-text, 1) !default;
+$--nav-text-selected: getColorVar(--nav-text, 1) !default;
+$--nav-text-tab: getColorVar(--font, 0.7) !default;
+$--nav-selected-bg: getColorVar(--nav-selected-bg, 0.1) !default;
+$--nav-hover-bg: getColorVar(--nav-hover-bg, 0.04) !default;
+$--nav-selected-icon: getColorVar(--nav-selected-icon) !default;
+// 滚动条颜色
+$--default-scroll-color: getColorVar(--default-scroll-color, 0.2) !default; //默认显示未点击颜色
+$--click-scroll-color: getColorVar(--click-scroll-color, 0.4) !default; //点击后颜色
+$--scroll-track-color: getColorVar(--click-scroll-color, 0.04) !default; //点击后轨道颜色
+// 文件上传
+$--upload-background: var(--upload-background, #f4f5f8) !default;
+$--upload-border-color: var(--upload-border-color, getColorVar(--border)) !default;
+$--upload-file-preview-background: var(--upload-file-preview-background, rgba(218, 221, 230, 0.08));
+$--upload-width: var(--upload-width, 140px) !default;
+$--upload-height: var(--upload-height, 112px) !default;
+$--upload-row-gap: var(--upload-row-gap, 12px) !default;
+$--upload-column-gap: var(--upload-column-gap, 12px) !default;
+$--upload-icon-width: var(--upload-icon-width, 40px) !default;
+$--upload-icon-height: var(--upload-icon-height, 40px) !default;
+$--upload-text: getColorVar(--font, 0.5) !default;
+
+//级联选择器
+$--cascader-box-shadow-color-1: getColorVar(--nav-text, 0.08) !default; //box-shadow色值1
+$--cascader-box-shadow-color-2: getColorVar(--nav-text, 0.05) !default;
+$--cascader-box-shadow-color-3: getColorVar(--nav-text, 0.02) !default;
+
+//树
+$--tree-node-height: var(--tree-node-height, 32px) !default;
+$--tree-background-color: getColorVar(--tree-background-color, 0.06) !default;
+$--tree-list-background-color: getColorVar(--tree-background-color, 0.08) !default;
+$--tree-hover-color: getColorVar(--tree-hover, 1) !default;
+$--tree-focus-color: getColorVar(--tree-focus, 1) !default;
+
+// 单选框的颜色
+$--radio-hover-border: getColorVar(--radio-hover-border) !default;
+$--radio-hover-inner: getColorVar(--radio-hover-inner) !default;
+$--radio-hover-inner-display: getColorVar(--hover, 0.3) !default;
+$--radio-hover-inner-unchecked: getColorVar(--radio-hover-inner-unchecked) !default;
+
+// 复选框的颜色
+$--checkbox-normal-selected: getColorVar(--selected) !default;
+
+// 标签页颜色
+$tabs-border: getColorVar(--tabs-border, 1) !default;

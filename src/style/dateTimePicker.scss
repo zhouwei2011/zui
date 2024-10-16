@@ -1,0 +1,505 @@
+.zrx-date-time-picker {
+    // width: 400px;
+    height: 32px;
+    padding: 4px 11px;
+    position: relative;
+    border: 1px solid $border;
+    position: relative;
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 16px);
+    &.disabled {
+        cursor: not-allowed;
+        background-color: $disabled;
+        border-color: $border;
+        input,
+        .clear-btn,
+        .panel,
+        .clear-btn,
+        .range-input-value {
+            color: $--text-color-disabled;
+            pointer-events: none;
+        }
+    }
+    .clear-btn,
+    .zrx-time-picker-icon {
+        position: absolute;
+        right: 3px;
+        top: 50%;
+        transform: translate(0, -50%);
+        // width: 14px;
+        // height: 14px;
+        border-radius: 50%;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        transition: opacity 0.25s;
+    }
+    .clear-btn {
+        z-index: 1;
+        color: white;
+        background-color: rgb(191, 191, 191);
+        cursor: pointer;
+        &.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        &.hide {
+            opacity: 1;
+            pointer-events: none;
+        }
+        &:before {
+            transform: scale(0.75);
+        }
+    }
+    &.focus {
+        border: 1px solid $primary;
+        box-shadow: 0 0 4px 2px getColorVar(--primary, 0.1);
+    }
+    input {
+        border: none;
+        line-height: 22px;
+        height: 22px;
+        outline: none;
+        background-color: transparent;
+    }
+    .range-input-value {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 32px) minmax(0, 1fr);
+        align-items: center;
+        .icon {
+            // border: 1px solid red;
+        }
+    }
+    .active-dot {
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        background-color: $primary;
+        transition: left 0.15s;
+        pointer-events: none;
+    }
+    &.daterange {
+        .range-input-value {
+            input {
+                // background-color: red;
+                border-bottom: none !important;
+            }
+        }
+    }
+    &.dates {
+        background-color: white;
+        input {
+            line-height: 32px;
+            height: 32px;
+        }
+    }
+}
+.zrx-date-time-picker-panel {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transform: scale(1, 0);
+    // bottom: -10px;
+    // left: 0;
+    border-radius: 2px;
+    // box-shadow: 0 3px 6px -4px rgba(#000000, 0.1216), 0 6px 16px rgba(0, 0, 0, 0.0784), 0 9px 28px 8px rgba(0, 0, 0, 0.051);
+    box-shadow: 0 0 6px getColorVar(--shadow, 0.12);
+    transition: opacity 0.25s, transform 0.25s;
+    // transform-origin: 0 0;
+    z-index: 10;
+    background-color: $white;
+    &.year,
+    &.month,
+    &.date,
+    &.dates,
+    // &.monthrange
+    &.week {
+        width: 280px;
+    }
+    &.year,
+    &.month {
+        .panel-body {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(4, minmax(0, 66px));
+            align-items: stretch;
+            justify-items: stretch;
+            .year-item,
+            .month-item {
+                position: relative;
+                .num {
+                    font-size: 14px;
+                    height: 24px;
+                    width: 60px;
+                    border-radius: 2px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin: auto;
+                    text-align: center;
+                    line-height: 24px;
+                    background-color: transparent;
+                    transition: background-color 0.25s;
+                }
+                &:hover {
+                    .num {
+                        background-color: $--btn-default-bg-hover;
+                    }
+                }
+                &.current {
+                    .num {
+                        background-color: $primary;
+                        color: white;
+                    }
+                }
+                &.gray {
+                    .num {
+                        color: $--text-color-disabled;
+                    }
+                }
+            }
+        }
+    }
+    &.date,
+    &.dates,
+    &.week,
+    &.datetime,
+    &.daterange,
+    &.monthrange,
+    &.datetimerange {
+        .panel-header {
+            grid-template-columns: repeat(2, minmax(0, 22px)) minmax(0, 1fr) repeat(2, minmax(0, 22px));
+        }
+        .panel-body {
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            grid-auto-rows: minmax(0, 36px);
+            align-items: stretch;
+            justify-items: stretch;
+            .date-item {
+                cursor: pointer;
+                line-height: 36px;
+                text-align: center;
+                font-size: 14px;
+                position: relative;
+                .num {
+                    height: 24px;
+                    display: inline-block;
+                    line-height: 22px;
+                    width: 24px;
+                    position: relative;
+                    z-index: 1;
+                    border: 1px solid transparent;
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto 0;
+                    height: 24px;
+                }
+                &:hover {
+                    &:not(.during) {
+                        .num {
+                            background-color: $--btn-default-bg-hover;
+                        }
+                    }
+                }
+                &.current {
+                    &:not(:hover) {
+                        .num {
+                            background-color: $primary;
+                            color: $white;
+                        }
+                    }
+                    &:hover {
+                        .num {
+                            background-color: $primary;
+                            color: $white;
+                        }
+                    }
+                }
+                &.during,
+                &.current {
+                    &:before {
+                        background-color: $date-current;
+                    }
+                    &.start {
+                        &:not(.hover-during) {
+                            &:before {
+                                left: 5px;
+                            }
+                        }
+                    }
+                    &.end {
+                        &:not(.hover-during) {
+                            &:before {
+                                right: 5px;
+                            }
+                        }
+                    }
+                }
+                &.different-month {
+                    color: $--text-color-disabled;
+                    &:before {
+                        // display: none;
+                    }
+                }
+                &.today {
+                    .num {
+                        border: 1px solid $primary;
+                    }
+                }
+                &.hover-during {
+                    &:before {
+                        background-color: rgba(var(--date-current), 1);
+                    }
+                }
+                &.hover-during.same-month {
+                    &:before {
+                        border-top: 1px dashed $primary-2;
+                        border-bottom: 1px dashed $primary-2;
+                    }
+                    &.start-hover-during {
+                        &:before {
+                            left: 5px;
+                            border-left: 1px dashed $primary-2;
+                        }
+                    }
+                    &.end-hover-during {
+                        &:before {
+                            right: 5px;
+                            border-right: 1px dashed $primary-2;
+                        }
+                    }
+                }
+                &.during.hover-during {
+                    &:before {
+                        border: none;
+                        background-color: $date-current;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+                &.disabled {
+                    color: $--text-color-disabled;
+                    cursor: not-allowed;
+                    &:before {
+                        background-color: $disabled;
+                    }
+                }
+            }
+        }
+    }
+    &.monthrange {
+        .panel-body {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(4, minmax(0, 66px));
+            .date-item {
+                position: relative;
+                .num {
+                    width: 60px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    &.week {
+        .panel-body {
+            .date-item {
+                text-align: center;
+                line-height: 36px;
+                &:hover {
+                    &:not(.during) {
+                        .num {
+                            background-color: transparent;
+                        }
+                    }
+                }
+                &.hover {
+                    &:before {
+                        background-color: $disabled;
+                    }
+                }
+                &.current {
+                    .num {
+                        background-color: transparent;
+                        color: white;
+                    }
+                    &:before {
+                        background-color: $primary;
+                    }
+                }
+            }
+        }
+    }
+    &.date,
+    &.dates,
+    &.datetime {
+        .panel-body {
+            .date-item {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+    &.datetime,
+    &.datetimerange {
+        // width: 428px;
+        display: grid;
+        // grid-template-columns: minmax(0, 280px) minmax(0, 168px);
+        // grid-template-columns: minmax(0, 280px) minmax(0, 148px);
+        grid-template-columns: 280px 148px;
+        grid-template-rows: minmax(0, 40px) minmax(0, auto);
+        .panel-header {
+            grid-column-start: 1;
+        }
+        .panel-body {
+            grid-column-start: 1;
+            .date-item {
+                &:before {
+                    background-color: transparent;
+                }
+            }
+        }
+        .time-panel-header {
+            grid-column-start: 2;
+            grid-row-start: 1;
+            text-align: center;
+            line-height: 40px;
+            border-left: 1px solid $border;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: MicrosoftYaHei-Bold;
+            color: $font;
+        }
+        .time-panel-body {
+            grid-column-start: 2;
+            grid-row-start: 2;
+            border-left: 1px solid $border;
+            border-top: 1px solid $border;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: minmax(0, 1fr);
+            .hour,
+            .minute {
+                border-right: 1px solid $border;
+            }
+            .hour,
+            .minute,
+            .second {
+                .el-scrollbar__wrap {
+                    overflow-x: auto;
+                    .time-item {
+                        line-height: 32px;
+                        text-align: center;
+                        cursor: pointer;
+                        font-size: 14px;
+                        font-family: MicrosoftYaHei;
+                        color: $font;
+                        &.current {
+                            background-color: $date-current;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.daterange,
+    &.monthrange {
+        width: 560px;
+        grid-template-rows: minmax(0, 40px) minmax(0, 1fr);
+        .panel-header {
+            .panel-header-text {
+                grid-column-start: 3;
+            }
+        }
+    }
+    &.datetimerange {
+        // grid-template-rows: minmax(0, 40px) minmax(0, 1fr) minmax(0, 42px);
+        grid-template-rows: minmax(0, 40px) minmax(0, 1fr) minmax(0, 50px);
+    }
+    &.datetimerange,
+    &.datetime {
+        // grid-template-rows: minmax(0, 40px) minmax(0, 1fr) minmax(0, 42px);
+        .panel-footer {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            padding: 0 12px;
+            border-top: 1px solid $border;
+            // line-height: 40px;
+            line-height: 48px;
+            text-align: right;
+            .datetimerange-panel-btn {
+                display: inline-block;
+                width: 60px;
+                min-width: auto;
+            }
+        }
+    }
+    &.daterange,
+    &.monthrange,
+    &.datetimerange {
+        display: grid;
+        grid-auto-flow: column;
+        .time-panel-header {
+            grid-column-start: 2;
+            grid-row-start: 1;
+        }
+        .time-panel-body {
+            grid-column-start: 2;
+            grid-row-start: 2;
+        }
+    }
+    .panel-header {
+        display: grid;
+        grid-template-columns: minmax(0, 22px) minmax(0, 1fr) minmax(0, 22px);
+        grid-template-rows: minmax(0, 40px);
+        padding: 0 8px;
+        align-items: center;
+        justify-items: center;
+        .prev-btn,
+        .next-btn {
+            cursor: pointer;
+            margin-top: 9px;
+            font-size: 14px;
+            color: $font;
+        }
+        .panel-header-text {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: MicrosoftYaHei-Bold;
+            color: $font;
+        }
+    }
+    .panel-body {
+        display: grid;
+        border-top: 1px solid $border;
+        align-items: center;
+        justify-items: center;
+        padding: 8px 14px;
+        .year-item,
+        .month-item,
+        .date-item {
+            &:not(.week-label) {
+                cursor: pointer;
+            }
+            &.week-label {
+                font-size: 14px;
+                font-weight: 600;
+                font-family: MicrosoftYaHei-Bold;
+                color: $font;
+            }
+        }
+    }
+}

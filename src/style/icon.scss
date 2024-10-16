@@ -1,0 +1,443 @@
+// icon样式
+.zrx-icon {
+    font-family: "icomoon" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="zrx-icon-"] {
+    @extend .zrx-icon;
+}
+.btn,
+.icon {
+    display: inline-block;
+    text-align: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none;
+    &[reverse-x] {
+        transform: rotateY(180deg);
+    }
+    &[reverse-z] {
+        transform: rotateZ(180deg);
+    }
+}
+.btn {
+    &:hover {
+        cursor: pointer;
+    }
+}
+.icon {
+    line-height: 1;
+}
+.zrx-icon-draw-hook {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+    font-size: 0;
+    transform: scale(0.875);
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+    }
+    i {
+        position: relative;
+        width: 12px;
+        height: 6px;
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 3px;
+            width: 8px;
+            height: 1px;
+            transition: all 0.2s ease-out;
+            background-color: $--text-color;
+        }
+        &:before {
+            left: -1px;
+            transform: rotate(40deg);
+        }
+        &:after {
+            right: -1px;
+            transform: rotate(-40deg);
+        }
+    }
+    &[reverse] {
+        i {
+            &:before {
+                transform: rotate(-40deg);
+            }
+            &:after {
+                transform: rotate(40deg);
+            }
+        }
+    }
+}
+.svg-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    mask-position: center center;
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+    &.zrx-icon-close {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_close_sm.svg");
+    }
+    &.zrx-icon-close-large {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_close.svg");
+    }
+    &.zrx-icon-close-round {
+        background-color: $--text-dim;
+        mask-image: url("../assets/svg-icon/common_close_f.svg");
+    }
+
+    &.zrx-icon-done {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_done.svg");
+    }
+    &.zrx-icon-windows-min {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_windows_min.svg");
+    }
+    &.zrx-icon-add {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_add.svg");
+    }
+    &.zrx-icon-right-angle {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down_sm.svg");
+        transform: rotate(-90deg);
+    }
+    &.zrx-icon-right-angle-large {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down.svg");
+        transform: rotate(-90deg);
+    }
+    &.zrx-icon-left-angle {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down_sm.svg");
+        transform: rotate(90deg);
+    }
+    &.zrx-icon-left-angle-large {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down.svg");
+        transform: rotate(90deg);
+    }
+    &.zrx-icon-down-angle {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down_sm.svg");
+        transition: transform 0.3s;
+        &[opened] {
+            transform: rotate(-180deg);
+        }
+    }
+    &.zrx-icon-down-angle-large {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down.svg");
+        transition: transform 0.3s;
+    }
+    &.zrx-icon-up-angle {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down_sm.svg");
+        transform: rotate(180deg);
+    }
+    &.zrx-icon-up-angle-large {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_down.svg");
+        transform: rotate(180deg);
+    }
+    &.zrx-icon-double-angle-right {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angles_down_sm.svg");
+        transform: rotate(-90deg);
+    }
+    &.zrx-icon-double-angle-left {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angles_down_sm.svg");
+        transform: rotate(90deg);
+    }
+    &.zrx-icon-double-angle-down {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angles_down_sm.svg");
+    }
+    &.zrx-icon-double-angle-up {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angles_down_sm.svg");
+        transform: rotate(180deg);
+    }
+    &.zrx-icon-double-angle-line-right {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_angle_line_right.svg");
+    }
+    &.zrx-icon-calendar {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_calendar.svg");
+    }
+    &.zrx-icon-clock {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_clock.svg");
+    }
+    &.zrx-icon-delete {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_delete.svg");
+    }
+    &.zrx-icon-details {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_details.svg");
+    }
+
+    &.zrx-icon-user {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_user.svg");
+    }
+    &.zrx-icon-magnifier {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_search.svg");
+    }
+    &.zrx-icon-show-more {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_more_hori.svg");
+    }
+
+    &.zrx-icon-filter-table {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_filter_table.svg");
+    }
+    &.zrx-icon-upload {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_upload.svg");
+    }
+    &.zrx-icon-download {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_download.svg");
+    }
+    &.zrx-icon-paper-clip {
+        background-color: $primary;
+        mask-image: url("../assets/svg-icon/common_attach.svg");
+    }
+    &.zrx-icon-assign-person {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_assign_person.svg");
+    }
+    &.zrx-icon-folder {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_folder.svg");
+    }
+    &.zrx-icon-revocation {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_revocation.svg");
+    }
+    &.zrx-icon-verification {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_verification.svg");
+    }
+    //数据空态图
+    &.zrx-icon-empty-default {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_no_data_l.svg");
+    }
+    &.zrx-icon-empty-person {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_addperson_l.svg");
+    }
+    &.zrx-icon-image-failure {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_picture_error_l.svg");
+    }
+    &.zrx-icon-empty-search {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_no_result_l.svg");
+    }
+    &.zrx-icon-empty-notify {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_error_l.svg");
+    }
+    &.zrx-icon-empty-warning {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_img_alert_alarm_l.svg");
+    }
+    &.zrx-icon-empty-map {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_map_default_l.svg");
+    }
+    &.zrx-icon-map-offline {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_map_offline_l.svg");
+    }
+    &.zrx-icon-empty-map-empty {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_no_data_map_l.svg");
+    }
+    &.zrx-icon-empty-video {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_video_disable_l.svg");
+    }
+    &.zrx-icon-video-offline {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/default_video_offline_l.svg");
+    }
+    // 上传文件
+    &.zrx-icon-upload-file {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/icon_upload_file.svg");
+    }
+    // 上传图片
+    &.zrx-icon-upload-image {
+        width: 56px;
+        height: 56px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/icon_upload_image.svg");
+    }
+    &.zrx-icon-eye {
+        background-color: $--text-dim;
+        mask-image: url("../assets/svg-icon/common_password_visible.svg");
+    }
+    &.zrx-icon-closed-eye {
+        background-color: $--text-dim;
+        mask-image: url("../assets/svg-icon/common_password_unvisible.svg");
+    }
+    &.zrx-icon-show-eye {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_password_show.svg");
+    }
+    &.zrx-icon-hide-eye {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_password_hide.svg");
+    }
+    &.zrx-icon-copy {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_copy.svg");
+    }
+    &.zrx-icon-hyphen {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_windows_min.svg");
+    }
+    &.zrx-icon-draw-left {
+        width: 20px;
+        height: 20px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_arrow_left.svg");
+    }
+    &.zrx-icon-draw-right {
+        width: 20px;
+        height: 20px;
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_arrow_right.svg");
+    }
+    &.zrx-icon-export {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_daochu.svg");
+    }
+    &.zrx-icon-import {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_daoru.svg");
+    }
+    &.zrx-icon-inverse {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_inverse.svg");
+    }
+    &.zrx-icon-orthogona {
+        background-color: $--text-color;
+        mask-image: url("../assets/svg-icon/common_orthogona.svg");
+    }
+}
+// 多色图标
+.zrx-icon-error {
+    width: 24px;
+    height: 24px;
+    background: url("../assets/svg-icon/feedback_error_sm.svg") left top / cover no-repeat;
+}
+.zrx-icon-info {
+    width: 24px;
+    height: 24px;
+    background: url("../assets/svg-icon/feedback_info_sm.svg") left top / cover no-repeat;
+}
+.zrx-icon-success {
+    width: 24px;
+    height: 24px;
+    background: url("../assets/svg-icon/feedback_success_sm.svg") left top / cover no-repeat;
+}
+.zrx-icon-question {
+    width: 24px;
+    height: 24px;
+    background: url("../assets/svg-icon/question_sm.svg") left top / cover no-repeat;
+}
+.zrx-icon-info-gray {
+    width: 24px;
+    height: 24px;
+    background: url("../assets/svg-icon/info_sm.svg") left top / cover no-repeat;
+}
+.zrx-icon-error-large {
+    width: 40px;
+    height: 40px;
+    background: url("../assets/svg-icon/feedback_error_lg.svg") left top / cover no-repeat;
+}
+.zrx-icon-info-large {
+    width: 40px;
+    height: 40px;
+    background: url("../assets/svg-icon/feedback_info_lg.svg") left top / cover no-repeat;
+}
+.zrx-icon-success-large {
+    width: 40px;
+    height: 40px;
+    background: url("../assets/svg-icon/feedback_success_lg.svg") left top / cover no-repeat;
+}
+.zrx-icon-question-large {
+    width: 40px;
+    height: 40px;
+    background: url("../assets/svg-icon/feedback_question_lg.svg") left top / cover no-repeat;
+}
+.zrx-icon-warning {
+    width: 24px;
+    height: 24px;
+    background: url("../assets/svg-icon/feedback_warning_sm.svg") left top / cover no-repeat;
+}
+.zrx-icon-file-normal {
+    width: 32px;
+    height: 32px;
+    background: url("../assets/svg-icon/file_nor.svg") left top / cover no-repeat;
+}
+.zrx-icon-file-warning {
+    width: 32px;
+    height: 32px;
+    background: url("../assets/svg-icon/file_wrong.svg") left top / cover no-repeat;
+}

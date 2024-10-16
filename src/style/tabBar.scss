@@ -1,0 +1,112 @@
+//tab切换样式
+.zrx-tab-bar {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    position: relative;
+    height: 40px;
+    border-bottom: 1px solid $border;
+    button {
+        &[disabled] {
+            color: $--text-color-disabled;
+            background-color: $--text-color-disabled;
+            &.svg-icon {
+                cursor: not-allowed;
+            }
+        }
+        &.btn {
+            border: 0;
+        }
+    }
+    &.static {
+        .tab {
+            max-width: var(--tab-width);
+            min-width: 48px;
+            padding: 0 24px;
+        }
+    }
+    &.scroll,
+    &.toggle {
+        .scroller {
+            order: 2;
+            max-width: calc(var(--tab-width) * var(--tab-columns));
+            .tab {
+                width: var(--tab-width);
+                padding: 0 12px;
+            }
+        }
+    }
+    > .btn {
+        &.zrx-icon-double-angle-left {
+            order: 0;
+        }
+        &.zrx-icon-left-angle {
+            order: 1;
+        }
+        &.zrx-icon-right-angle {
+            order: 3;
+        }
+        &.zrx-icon-double-angle-right {
+            order: 4;
+        }
+    }
+    .scroller {
+        display: flex;
+        position: relative;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        overflow-y: hidden;
+        z-index: 1;
+        @include no-scrollbar;
+        .tab {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            height: 40px;
+            line-height: 38px;
+            cursor: pointer;
+            user-select: none;
+            @include ellipsis;
+            text-align: center;
+            color: $--nav-text-tab;
+            transition: all 0.2s ease-out;
+            &.selected {
+                @include boldFont;
+                color: $primary;
+            }
+            span {
+                line-height: 20px;
+            }
+        }
+        .ghost {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            border-radius: 2px;
+            transition: all 0.2s ease-out;
+            background-color: $primary;
+        }
+    }
+    > .el-select {
+        order: 5;
+    }
+    .el-select {
+        width: 76px;
+        .el-input {
+            .el-input__inner {
+                opacity: 0;
+            }
+            .el-input__prefix {
+                left: 0;
+                right: auto;
+                pointer-events: none;
+                > span {
+                    height: 32px;
+                    padding-left: 16px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}

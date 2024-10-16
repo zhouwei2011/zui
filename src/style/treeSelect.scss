@@ -1,0 +1,99 @@
+// 树形下拉框
+// .tree-select-demo {
+.el-select {
+    .el-select__tags {
+        padding-left: 2px;
+        .el-tag {
+            &.el-tag--info {
+                &.el-tag--small {
+                    &.el-tag--light {
+                        border: 1px solid $--btn-border-color;
+                        border-radius: 2px;
+                        margin: 4px 0 4px 2px;
+                        background: $background;
+                        padding: 2px 2px 2px 8px;
+
+                        .el-select__tags-text {
+                            margin-right: 2px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            color: $font;
+                        }
+                        .el-icon-close {
+                            left: 0;
+                            transform: scale(1);
+                            width: 24px;
+                            height: 24px;
+                            background-color: $font;
+                            mask-image: url("../assets/svg-icon/common_close_sm.svg");
+                            &:active {
+                                background-color: $primary;
+                            }
+                            &::before {
+                                content: none;
+                            }
+                        }
+                        &:active {
+                            background: $--btn-border-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.el-select-dropdown.el-popper.tree-select-popper {
+    .el-scrollbar {
+        .el-select-dropdown__wrap.el-scrollbar__wrap .el-scrollbar__view.el-select-dropdown__list {
+            // width: 270px;
+            padding: 4px;
+            li.el-select-dropdown__item {
+                padding: 0;
+                height: auto;
+                overflow: hidden;
+                box-sizing: border-box;
+                &.selected {
+                    font-weight: normal;
+                    background-color: $white;
+                }
+                &.hover {
+                    background-color: $white;
+                }
+            }
+            .el-tree {
+                margin: 0;
+            }
+        }
+    }
+    .zrx-search-box {
+        position: sticky;
+        top: 0;
+        height: 38px;
+        background: $white;
+        .el-input {
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: inline-block;
+                opacity: 0.5;
+                width: 24px;
+                height: 24px;
+                margin: 4px;
+                background-color: $--upload-text;
+                mask-image: url(../assets/svg-icon/common_search.svg);
+            }
+            box-sizing: border-box;
+            .el-input__inner {
+            }
+            .el-input__icon {
+                line-height: 30px;
+                cursor: pointer;
+            }
+        }
+    }
+    &.is-multiple .el-select-dropdown__item:before {
+        display: none;
+    }
+}
